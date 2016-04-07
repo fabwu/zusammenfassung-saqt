@@ -166,6 +166,158 @@ Mit Usability ist die Benutzerfreundlichkeit eines Systems gemeint. So soll z.B.
 
 \section{Stile und Muster}
 
+\subsection{Stile}
+
+Ein Architektur-Stil beschreibt ein Muster zur strukturellen Organisation einer Familie von Systemen. Diese fundamentale Struktur beschreibt folgende Eigenschaften eines Software-Systems:
+\begin{itemize}
+	\item Die Komponententypen und welche Funktionen diese zur Laufzeit erfüllen.
+	\item Die topologische Anordnung dieser Komponenten.
+	\item Die Konnektoren, welche die Kommunikation und Koordination zwischen den Komponenten regeln.
+	\item Eine Menge von semantischen Einschränkungen, die bestimmen, wie Komponenten und Konnektoren miteinander verbunden werden können.
+\end{itemize}
+Es haben sich folgende Stil herausgebildet, die in den nachfolgenden Abschnitten beschrieben werden:
+\begin{itemize}
+	\item Schichten (Layers, Tiers)
+	\item Pipes \& Filters
+	\item Verteilte Systeme (Client/Server, Peer-to-Peer)
+	\item Blackboard
+	\item Service-orientierte Architekturen (SOA)
+\end{itemize}
+
+\subsubsection{Schichten}
+
+Ein System wird in Schichten aufgeteilt, deren Elemente einen ähnlichen Abstraktionsgrad besitzen. Eine Schicht benutzt nur die Services, welche von der direkt darunterliegenden Schicht zur Verfügung gestellt werden. Das Überspringen einer Schicht zerstört die Architektur.  Schichten haben folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Leicht verständliches Strukturkonzept
+	\item[+] Minimiert Abhängigkeiten zwischen Komponenten
+	\item[+] Schichten sind voneinander unabhängig in Erstellung und Betrieb
+	\item[+] Änderungen in einer Schicht können maximal eine andere Schicht betreffen
+	\item[--] Kann die Performance eines Systems beeinträchtigen, wenn Anfragen durch mehrere Schichten weitergereicht werden müssen
+	\item[--] Änderungen im Datenmodell können alle Schichten betreffen (Datenverwaltung, Applikation, Präsentation)
+\end{itemize}
+
+\subsubsection{Pipes \& Filters}
+
+Bei diesem Stil werden Verarbeitungseinheiten (Filter) hintereinander geschaltet und durch Datenkanäle (Pipes) verbunden. Jeder Filter gibt sein Ergebnis direkt an den nächsten Filter weiter. Pipes sind keine eigenen Komponenten in der Architektur sondern dienen rein als Konnektoren. Es sind verschiedene Koordinationsmodelle denkbar, so kann die Steuerung zentral oder dezentral sein, die Pipes aktiv oder passiv und die Datenübergabe komplett, stückchenweise oder zeitversetzt geschehen. Pipes \& Filters bieten folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Einfache Implementierung
+	\item[+] Klar verständliche Struktur
+	\item[+] Klar strukturierte Abläufe
+	\item[+] Mächtige Pipes können entscheiden, an welche Instanz eines Filters (Load balancing) oder an welchen Filter (Kapselung) sie die Daten weitergeben
+	\item[--] Filter kennen einander nicht (Folgefehler können von ihnen nicht behandelt werden)
+	\item[--] Konfiguration der Verarbeitungskette kann schwierig sein
+	\item[--] Filter können nur über Daten kommunizieren (Gesamte Verarbeitungsinformation muss in den Daten oder der zentralen Steuerung enthalten sein)
+\end{itemize}
+
+\subsubsection{Verteilte Systeme}
+
+Verteilte Systeme können entweder als Client/Server oder als P2P-Netzwerk betrieben werden. Der Client wird als Applikation lokal betriebn und kommuniziert über ein Anfrage-Antwort-Schema mit dem zentral zur Verfügung gestellten Server. Dabei kann auf dem Client zwischen Thin Client (z.B. Gmail) und Rich Client (z.B. Outlook) unterschieden werden. Der Client/Server-Stil bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Zentralisierung wichtiger, rechenintensiver oder sensibler Berechnungen im Server
+	\item[+] Thin Clients einfach in Verteilung und Wartung
+	\item[+] Rich Clients oft bei Server-Ausfall noch verwendbar
+	\item[--] Netzbelastung hoch (besonders bei Thin Clients)
+	\item[--] Verteilung der Funktionalität nicht immer einfach
+	\item[--] Grenzen der Skalierung bei sehr hohen Clientzahlen
+\end{itemize}
+
+Bei einem P2P-Netzwerk kommunizieren verteilte Komponenten (Peers), die sowohl die Rolle von Clients als auch Servern wahrnehmen und sich Ressourcen teilen. Die Komponenten sind über eine Art Konnektor (z.B. Internet) miteinander verbunden. Bei einem P2P-Netzwerk gibt es keine zentrale Kontrolle, es kann also jeder Peer mit jedem Peer kommunizieren. Die Lokalisierung kann durch dezentrale Kommunikation (Peers tauschen untereinander ihre Listen bekannter Peers aus) oder durch einen zentralen Service realisiert werden. Das P2P-Netzwerk hat folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Hohe Ausfallsicherheit (kein single point of failure)
+	\item[+] Rechenintensive Aufgaben können verteilt werden
+	\item[--] Auffinden und Erkennen von Peers in grossen Netzen
+	\item[--] Potentielle Gefahr des Zerfalls des P2P Netzes (Nur bestimmte Gruppen von Peers kennen sich)
+	\item[--] Fehlerbehandlung (Wer reagiert, wenn ein Peer seine Aufgaben falsch löst?)
+	\item[--] Keine garantierten Antwortzeiten
+\end{itemize}
+
+\subsubsection{Blackboard}
+
+Der Blackboard-Stil kommt ursprünglich aus der Künstlichen Intelligenz zur Lösung komplexer Probleme, für die kein deterministisches Lösungsverfahren existiert. An der Problemlösung arbeiten mehrere unabhängige Programme welche ein Blackboard als zentralen Datenspeicher verwenden. Die Programme kommunizieren also nicht untereinander sondern nur über ein zentrales Blackboard. Eine zentrale Steuerungskomponente bewertet den Lösungsfortschritt auf dem Blackboard und aktiviert die verfügbaren Programme. Das Blackboard hat folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Einfache Integration komplexer Systeme
+	\item[+] Parallelisierung der Berechnungen möglich
+	\item[+] Moderne Variante: Tuple Space
+	\item[--] Keine Garantie der Lösungsfindung
+	\item[--] Finden der richtigen Kontrollstrategie ist schwierig
+	\item[--] Keine garantierten Antwortzeiten
+\end{itemize}
+
+\subsubsection{SOA}
+
+SOA wurde mega gehypt und nun machen sich alle darüber lustig und verwenden stattdessen Microservices, welche nun alle Probleme dieser Welt lösen. SOA versucht eine Spezifikation der Service, Datenformate und Kommunikationsprotokolle zu erreichen. Die Applikation wird dann als Orchestrierung von verschiedenen Services zur Erreichung der Geschäftsziele entworfen. Ein Service Consumer verwendet über ein Integration Layer (Middleware) ein Service eines Service Providers. Services tauche in allen Schichten auf und kommunizieren über einen zentralen Enterprise Service Bus. So gibt es natürlich Services für das Business aber auch für die Entwicklung oder die Infrastruktur. Service-orientierte Systeme sollten modular, verteilbar, auffindbar, austauschbar und wiederverwendbar sein. Wichtig dabei ist eine saubere Trennung der Verantwortlichkeiten und lose Kopplung. Ohne eine zentrale Stelle (SOA Governance) welche ein Überblick über das Ganze behält, wird jede Umsetzung von SOA scheitern. SOA bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] descriptionSehr flexible Architekturform mit einfachem Grundmodell
+	\item[+] Vielzahl von ausgereiften Standards
+	\item[+] Verbindung von Business und IT
+	\item[+] Voraussetzung für Cloud, Mashups usw.
+	\item[--] Zusätzliche Komplexität wegen offener, dezentralisierter Systeme	
+	\item[+] Vielzahl schwieriger Fragestellungen (Service design, Interoperabilität, Standards)
+\end{itemize}
+
+\subsection{Muster}
+
+Ein Architekturmuster erfindet man nicht einfach, sondern erkennt man mithilfe von Erfahrungen aus der Praxis. Ein Muster setzt mehrere Taktiken um, aber macht auch immer einen Kompromiss zwischen mehreren Qualitätsattributen. Die Aufgabe des Architekten ist das richtige Muster anhand des Kontexts und den Rahmenbedingungen zu finden. Er muss sich auch genau überlegen, wie der Kompromiss des Musters die eigene Lösung beeinflusst. Ein Muster wird immer durch den Kontext, das Problem und die Lösung beschrieben.
+
+Um ein System oder eine Komponente in eine bestehende Umgebung einzubinden existieren folgende vier Patterns (Enterprise Integration Patterns):
+\begin{itemize}
+	\item File Transfer
+	\item Shared Database
+	\item Remote Procedure Invocation (RPC)
+	\item Messaging
+\end{itemize}
+Diese Patterns werden nachfolgend detailliert beschrieben:
+
+\subsubsection{File Transfer}
+
+Beim File Transfer wird eine Datei irgendwo zentral abgelegt, damit beide Applikationen drauf Zugriff haben. Dabei wird das Dateiformat und der Zeitintervall, in denen die Datei erzeugt und konsumiert wird, untereinander vereinbart. Dieses Muster bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Dateien als universelles Speichermedium
+	\item[+] Minimale Anforderungen an Hardware/Software
+	\item[+] Keine Kenntnisse der Applikation notwendig für Integration
+	\item[+] Keine weitergehenden Abhängigkeiten zwischen integrierten Applikationen	
+	\item[--] Synchronisation der Daten kann bei Änderungen schnell verloren gehen	
+	\item[--] Ungeeignet für den sehr häufigen Austausch kleinerer Datenmengen (Dateimanagementproblem)
+\end{itemize}
+
+\subsubsection{Shared Database}
+
+Bei diesem Muster wird eine Datenbank zwischen verschiedenen Applikationen geteilt. Dadurch werden die Daten konsistent und in einem einheitlichen Datenformat über die Anwendungen ausgetauscht. Die Veränderung der Daten ist über Datenbanktransaktionen gesichert. Die Shared Database bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Unterstützung von Datenbankstandards in allen Entwicklungsumgebungen
+	\item[+] Synchronisation der Daten gesichert
+	\item[--] Applikationen müssen an Datenformate angepasst werden (Adapter, Transformationen)
+	\item[--] Einigung aller Applikationen auf ein einheitliches Format
+	\item[--] Externe Applikationen arbeiten oft nur mit ihren eigenen Formaten (Bedarf nach zusätzlichen Adaptern)
+	\item[--] Datenbank als potentieller single point of failure für alle Applikationen
+	\item[--] Performanzprobleme
+\end{itemize}
+
+\subsubsection{Remote Procedure Invocation}
+
+Beim RPC-Muster werden Methoden auf entfernten Anwendungen aufgerufen. Dabei werden die Daten zu einer Funktionalität gekoppelt. Eine Applikation wird als Komponente gekapselt, welche ihre Funktionalität über eine Schnittstelle anderen Applikationen zur Verfügung stellt. Dieses Muster bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Applikationen können interne Datenformate ändern
+	\item[+] Unterschiedliche Schnittstellen können bereitgestellt werden
+	\item[+] Einfaches Entwicklungskonzept ("Prozeduraufruf")
+	\item[--] Abstimmung und Änderung von Schnittstellen über mehrere Applikationsgrenzen kann schwierig sein
+	\item[--] Aufrechterhalten von veralteten Schnittstellen
+	\item[--] Performanz- und Zuverlässigkeitsprobleme von Remote Aufrufen ("remote" <> "local")
+	\item[--] Enge Kopplung der Applikationen ("growing knot")
+\end{itemize}
+
+\subsubsection{Messaging}
+
+Durch Messaging wird eine lose Kopplung unter den einzelnen Systemen erreicht. Dabei wird zwischen synchroner, asynchroner und Publish-Subscribe Kommunikationsstilen unterschieden. Messaging bietet folgende Vor- bzw. Nachteile:
+\begin{itemize}
+	\item[+] Flexibelste Integrationslösung
+	\item[+] Unterstützung durch zahlreiche Technologien
+	\item[+] Transformation und Management der Daten innerhalb der Messaging Middleware und nicht in der Applikation
+	\item[--] Asynchrones Design von Applikationsfunktionen nicht immer einfach
+	\item[--] Testen und Debugging schwieriger
+	\item[--] Flexibilität führt zu zahlreichen Folgefragen, die gelöst werden müssen
+\end{itemize}
+
 \section{Sichten, Architekturentscheidungen und Dokumentation}
 
 \section{Bewertung von Architekturen (ATAM)}
