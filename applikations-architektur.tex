@@ -48,8 +48,26 @@ Der Verfall von Software tritt ein, wenn das System zunehmend mit neuen Funktion
 
 Der Unterschied zwischen Architektur und Design lässt sich gut an einem Beispiel ausmachen: Der Architekt definiert, dass die Komponente eine REST-Schnittstelle anbietet. Der Software-Entwickler setzt diese Schnittstelle konkret um - welche Ressourcen, welche Parameter usw.
 
-\section{Funktionale Anforderungen: Use cases und User Stories}
-\label{sec:funktionale-anforderungen}
+\section{Requirement-Engineering}
+Jedes Software-Projekt steht und fällt mit den Anforderungen. Karl Wiegers und Joy Beatty sagen, dass die Anforderungen nicht gleich ins kleinste Detail bekannt sein müssen, sondern nur immer soweit, dass das Entwicklungs-Team mit dem nächsten Schritt fortfahren kann. Zudem muss man sich immer bewusst sein, dass das was der Kunde sagt, oft nicht das ist was er meint.
+
+In den letzten Jahren hat die Business-Analyse an Bedeutung gewonnen. Doch unterschätzt man allgemein immer noch die Wichtigkeit des Requirement-Engineering. Die Architektur sieht man als Brücke zwischen den Geschäftszielen und dem Software-System.
+
+Inhärente (angeboren, innewohnend) Schwierigkeiten bei der Anforderungsanalyse:
+\begin{itemize}
+	\item Verständnis: Stakeholder können nicht wirklich wissen was sie wollen (im Sinne der IT Lösung).
+	\item Kommunikation: Komplex, unklar, Business-IT Gap
+	\item Kontrolle: Schwierig für den Software-Entwicklungsprozess
+	\item Nichttrennbare Verantwortlichkeiten: Alles scheint von allem abzuhängen
+\end{itemize}
+
+Zufällige Schwierigkeiten bei der Anforderungsanalyse:
+\begin{itemize}
+	\item Anforderungen später schreiben: nicht hilfreich für die Entwicklung (aber: rapid prototyping)
+	\item Widersprüchliche Interessen: Marketing (hype), allg. Dokumentation (unabh. von Anforderungen), Verträge. Das ist die Aufgabe des Architekten!
+	\item Ungenügende Anstrengungen, weil ich vielleicht keinen Bock haben mit Person X zu reden.
+	\item Unentdeckt: Schlichtweg vergessen oder unbekannt.
+\end{itemize}
 
 Anforderungen müssen SMART sein. SMART bedeutet:
 \begin{description}
@@ -59,6 +77,57 @@ Anforderungen müssen SMART sein. SMART bedeutet:
 	\item[Realizable:] Umsetzbar (Unter den gegebenen Randbedingungen und verfügbare Ressourcen)
 	\item[Traceable:] Nachverfolgbar (Konzeption - Spezifikation - Design - Implementation - Test)
 \end{description}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.75\linewidth]{fig/requirements-gathering-and-analysis}
+\caption{Requriements Gathering and Analysis}
+\label{fig:requirements-gathering-and-analysis}
+\end{figure}
+
+\section{Funktionale Anforderungen: Use cases und User Stories}
+\label{sec:funktionale-anforderungen}
+
+Um funktionale Anforderungen aufzunehmen gibt es grundsätzlich zwei Mittel: User Story und Use Cases. Den Unterschied zwischen den beiden Arten beschreibe ich gerne wie folgt: Eine User Story ist ein leichtgewichtiges Planungsinstrument, welches den Dialog mit dem Kunden fördert. Ein Use Case ist ein schwergewichtiges Dokumentationsinstrument in welchem die Anforderung detailliert spezifiziert wird. Die User-Story sind mehr Business getrieben die Use Cases sind eher auf der technischen Seite anzusiedeln.
+
+Falls eine User Story zu gross erscheint, kann diese als Epic angesehen werden. Wobei das Epic dann in mehrere User Storys unterteilt wird. Eine User Story hat das Muster \emph{“As a [role] I can [function] so that [rationale].”}. Gute User Stories sind INVEST (Independent, Negotiable, Valuable, Estimatable, Small, Testable). Zudem hat jeder User Story entsprechende Akzeptanzkriterien (Definition of Done).
+
+Oft macht man folgende Fehler beim verfassen von User Stories: Too formal or too much detail, Technical tasks masquerading as stories, Skipping the conversation.
+
+Nachfolgend ein Use-Case Template:
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/use-case-template}
+\caption{Use Case Template}
+\label{fig:use-case-template}
+\end{figure}
+
+\newpage
+Alles was wir umsetzen basiert immer auf dem Bedürfnis von jemanden. Dahinter stecken Ziele die erreicht werden sollen. Ziele existieren auf unterschiedlichen Stufen - uns bekannt als Zielhierarchien. 
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\linewidth]{fig/zielhierarchien}
+\caption{Zielhierarchien}
+\label{fig:zielhierarchien}
+\end{figure}
+
+Diese Hiearchien können von Top-Down oder Bottom-Up notiert werden. Nachfolgend ein Beispiel: "I want this sales contract. To do that I have to take this manager out to lunch. To do that I have to get some cash. To do that I have to withdraw money from this ATM. To do that I have to get it to accept my identity. To do that I have to get it to read my ATM card. To do that I have to find the card slot."
+
+Die verschiedenen Farben definieren die Flughöhe. Auf Stufe weiss ist es noch sehr abstrakt. Hier haben wir im generellen die Komponenten, wie Bestellungen oder Buchungen. Basierend auf denen können auf Stufe blau die eigentlichen Benutzer-Ziele definiert werden, wie Buchung stornieren, Bestellung ausliefern. Diese basieren auf irgendwelchen Funktionen, welche wir auf Stufe indigo ansiedeln. Die Stufe schwarz ist immer sehr technisch wie beispielsweise "2 Faktor Authentfizierung". Flache Listen von Use-Cases müssen gruppiert werden. Ein Beispiel wäre nach Mitarbeiter-Funktionen.
+
+Folgendes gilt es zu beachten, wenn die Schritte innerhalb des Use-Cases als Text verfasst werden:
+\begin{itemize}
+	\item Einfach formulierte Sätze beschreiben aktive Handlungen (Subjekt - Verb - Objekt).
+	\item Vogelperspektive und nicht Systemsicht verwenden.
+	\item Ziele entsprechen Absichten.
+	\item Zeige wie der Prozess im Hinblick auf das Ziel fortschreitet.
+	\item Ziel von Überprüfungen klarmachen.
+	\item Wiederholungen direkt schreiben (kein Pseudocode).
+\end{itemize}
+
+Ein Vision-Statement hat folgende Inhalte: For [customer] Who [needs... or has opportunity] The [product] Is [category] That [major capability, benefit, ...] Unlike [alternative, current system, current practice] Our Product [differentiation, advantages, ...].
 
 \section{Nichtfunktionale Anforderungen: Szenarios}
 
