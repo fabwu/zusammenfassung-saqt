@@ -88,6 +88,8 @@ Anforderungen müssen SMART sein. SMART bedeutet:
 \section{Funktionale Anforderungen: Use cases und User Stories}
 \label{sec:funktionale-anforderungen}
 
+Bei funktionalen Anforderung steht die Systemfunktionalität im Zentrum. Was bietet es mir, was kann ich damit tun? 
+
 Um funktionale Anforderungen aufzunehmen gibt es grundsätzlich zwei Mittel: User Story und Use Cases. Den Unterschied zwischen den beiden Arten beschreibe ich gerne wie folgt: Eine User Story ist ein leichtgewichtiges Planungsinstrument, welches den Dialog mit dem Kunden fördert. Ein Use Case ist ein schwergewichtiges Dokumentationsinstrument in welchem die Anforderung detailliert spezifiziert wird. Die User-Story sind mehr Business getrieben die Use Cases sind eher auf der technischen Seite anzusiedeln.
 
 Falls eine User Story zu gross erscheint, kann diese als Epic angesehen werden. Wobei das Epic dann in mehrere User Storys unterteilt wird. Eine User Story hat das Muster \emph{“As a [role] I can [function] so that [rationale].”}. Gute User Stories sind INVEST (Independent, Negotiable, Valuable, Estimatable, Small, Testable). Zudem hat jeder User Story entsprechende Akzeptanzkriterien (Definition of Done).
@@ -131,19 +133,29 @@ Ein Vision-Statement hat folgende Inhalte: For [customer] Who [needs... or has o
 
 \section{Nichtfunktionale Anforderungen: Szenarios}
 
-Eine Software richtet sich nicht nur nach den Anforderungen des Kunden (funktionalen Anforderungen), sondern wird auch durch Qualitätsansprüche an die Architektur (nichtfunktionale Anforderungen) beeinflusst. Nichtfunktionale Anforderungen werden einerseits durch Randbedingungen (Constraints) vorgegeben. So muss z.B. eine bestehende Softwareplattform genutzt werden oder die Zeit und Ressourcen sind zu knapp um eine verteilte Anwendung zu bauen. Die Randbedingungen schränken den Architekten bei seinen Entscheidungen also ein. 
+Eine Software richtet sich nicht nur nach den Anforderungen des Kunden (funktionalen Anforderungen), sondern wird auch durch Qualitätsansprüche an die Architektur (nichtfunktionale Anforderungen) beeinflusst - wie gut erfüllt das System die Bedürfnisse?. Wenn keine Nichtfunktionale Anforderungen existieren, braucht es auch keine Architektur! Nichtfunktionale Anforderungen werden einerseits durch Randbedingungen (Constraints) vorgegeben. So muss z.B. eine bestehende Softwareplattform genutzt werden oder die Zeit und Ressourcen sind zu knapp um eine verteilte Anwendung zu bauen. Die Randbedingungen schränken den Architekten bei seinen Entscheidungen also ein. 
 Es gibt aber auch nichtfunktionale Anforderungen die ein Architekt sehr wohl beeinflussen kann. Dazu gehören z.B. Benutzbarkeit, Erweiterbarkeit usw. Das sind die sogenannten Qualitätsattribute. Qualitätsattribute müssen immer messbar und testbar sein. Da ein Qualitätsattribut wie eine Anforderung ist, muss auch diese SMART (siehe Abschnitt \ref{sec:funktionale-anforderungen}) sein. Die Qualitätsattribute lassen sich durch bestimmte Strukturen und Verhaltensweisen erfüllen, die von der Architektur vorgegeben werden. Funktionale Anforderungen werden erfüllt, indem bestimmte Elemente der Architektur eine Aufgabe umsetzen. Die funktionalen Anforderungen bestimmen also nicht die Architektur. 
 Die Qualitätsattribute sind nicht unabhängig voneinander, weil Qualität nur indirekt messbar ist und für jeden Stakeholder etwas anderes bedeutet. Auch wenn alle funktionalen Anforderungen umgesetzt wurden, muss das nicht heissen man hat eine qualitativ hochwertige Software geschrieben. Allerdings darf man auch nicht nur auf Qualität setzen, weil dann keine Features umgesetzt werden. Deshalb sollte man immer Kompromisse bei seinen Entscheidungen eingehen.
 
 Qualitätsattribute lassen sich in Szenarien festhalten. Ein Szenario besteht immer aus folgenden Elementen:
 \begin{itemize}
-	\item Quelle des Auslösers (Benutzer, Entwickler)
-	\item Auslöser / Ereignis
-	\item Umgebung (zur Laufzeit, während Installation)
+	\item Quelle des Auslösers (Benutzer, Entwickler) (Stimulus Source)
+	\item Auslöser / Ereignis (Stimulus)
+	\item Umgebung (zur Laufzeit, während Installation) (Enviornment Artifact)
 	\item Systembestandteil (z.B GUI oder Backend)
-	\item Antwort / Reaktion
-	\item Antwortmetrik (Wie messen wir die Antwort?)
+	\item Antwort / Reaktion (Response)
+	\item Antwortmetrik (Wie messen wir die Antwort?) (Response Measure)
 \end{itemize}
+
+Beispielszenario:
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/sample-scenario}
+\caption{Beispiel-Szenario}
+\label{fig:sample-scenario}
+\end{figure}
+
+
 Ein Qualitätsattribut lässt sich problemlos in mehrere Szenarien aufschlüsseln, damit die Anforderung detaillierter beschrieben werden kann. Hat man die Szenarien bis ins Detail ausgearbeitet, können Taktiken und Muster angewendet werden um die gewünschten Ergebnisse zu erhalten.
 Nachfolgend werden einige Qualitätsattribute genauer beschrieben.
 
@@ -234,6 +246,9 @@ Mit Usability ist die Benutzerfreundlichkeit eines Systems gemeint. So soll z.B.
 \label{fig:usability}
 \end{figure}
 
+\subsection{Reusablity}
+
+Die Wiederverwendbarkeit ist eine Eigenschaft des Systems zur Entwicklungszeit. Weisen die Komponenten hohe Wiederverwendbarkeit können Kosten gespart werden in dem viele fast gleiche Systeme gebaut werden.
 
 \section{Prinzipien \& Taktiken}
 
