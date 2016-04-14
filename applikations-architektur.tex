@@ -250,7 +250,7 @@ Mit Usability ist die Benutzerfreundlichkeit eines Systems gemeint. So soll z.B.
 
 Die Wiederverwendbarkeit ist eine Eigenschaft des Systems zur Entwicklungszeit. Weisen die Komponenten hohe Wiederverwendbarkeit können Kosten gespart werden in dem viele fast gleiche Systeme gebaut werden.
 
-\section{Prinzipien \& Taktiken}
+\section{Prinzipien und Taktiken}
 Der Architekt muss Entscheidungen treffen und diese in der Systemstruktur umsetzen. Das heisst oft, dass Kompromisse gefunden werden müssen. Grundlegend werden gute Ideen wiederverwendet und neue Ideen müssen früh validiert werden. Zudem können Prinzipien \& Taktiken angewendet und Stile \& Muster eingesetzt werden. Prinzipien sind sehr allgemeine Richtlinien wobei Stile, Taktiken und Muster detaillierte Lösungsansätze für konkrete Entwurfsentscheidungen bieten.
 
 \subsection{Prinzipien}
@@ -426,7 +426,7 @@ Es haben sich folgende Stil herausgebildet, die in den nachfolgenden Abschnitten
 
 \subsubsection{Schichten}
 
-Ein System wird in Schichten aufgeteilt, deren Elemente einen ähnlichen Abstraktionsgrad besitzen. Eine Schicht benutzt nur die Services, welche von der direkt darunterliegenden Schicht zur Verfügung gestellt werden. Das Überspringen einer Schicht zerstört die Architektur.  Schichten haben folgende Vor- bzw. Nachteile:
+Ein System wird in Schichten aufgeteilt, deren Elemente einen ähnlichen Abstraktionsgrad besitzen. Eine Schicht benutzt nur die Services, welche von der direkt darunterliegenden Schicht zur Verfügung gestellt werden. Das Überspringen einer Schicht zerstört die Architektur. Schichten haben folgende Vor- bzw. Nachteile:
 \begin{itemize}
 	\item[+] Leicht verständliches Strukturkonzept
 	\item[+] Minimiert Abhängigkeiten zwischen Komponenten
@@ -451,7 +451,7 @@ Bei diesem Stil werden Verarbeitungseinheiten (Filter) hintereinander geschaltet
 
 \subsubsection{Verteilte Systeme}
 
-Verteilte Systeme können entweder als Client/Server oder als P2P-Netzwerk betrieben werden. Der Client wird als Applikation lokal betriebn und kommuniziert über ein Anfrage-Antwort-Schema mit dem zentral zur Verfügung gestellten Server. Dabei kann auf dem Client zwischen Thin Client (z.B. Gmail) und Rich Client (z.B. Outlook) unterschieden werden. Der Client/Server-Stil bietet folgende Vor- bzw. Nachteile:
+Verteilte Systeme können entweder als \textbf{Client/Server} oder als \textbf{P2P-Netzwerk} betrieben werden. Der Client wird als Applikation lokal betrieben und kommuniziert über ein Anfrage-Antwort-Schema mit dem zentral zur Verfügung gestellten Server. Dabei kann auf dem Client zwischen Thin Client (z.B. Gmail) und Rich Client (z.B. Outlook) unterschieden werden. Der Client/Server-Stil bietet folgende Vor- bzw. Nachteile:
 \begin{itemize}
 	\item[+] Zentralisierung wichtiger, rechenintensiver oder sensibler Berechnungen im Server
 	\item[+] Thin Clients einfach in Verteilung und Wartung
@@ -495,11 +495,19 @@ SOA wurde mega gehypt und nun machen sich alle darüber lustig und verwenden sta
 	\item[+] Vielzahl schwieriger Fragestellungen (Service design, Interoperabilität, Standards)
 \end{itemize}
 
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/soa-reference-architecture}
+\caption{SOA Reference Architecture}
+\label{fig:soa-reference-architecture}
+\end{figure}
+
+
 \subsection{Muster}
 
-Ein Architekturmuster erfindet man nicht einfach, sondern erkennt man mithilfe von Erfahrungen aus der Praxis. Ein Muster setzt mehrere Taktiken um, aber macht auch immer einen Kompromiss zwischen mehreren Qualitätsattributen. Die Aufgabe des Architekten ist das richtige Muster anhand des Kontexts und den Rahmenbedingungen zu finden. Er muss sich auch genau überlegen, wie der Kompromiss des Musters die eigene Lösung beeinflusst. Ein Muster wird immer durch den Kontext, das Problem und die Lösung beschrieben.
+Ein Muster in der Software-Architektur beschreibt ein generisches, well-proven Schema, welches in spezifischen Kontext genutzt werden kann. Ein Architekturmuster erfindet man nicht einfach, sondern erkennt man mithilfe von Erfahrungen aus der Praxis. Ein Muster setzt mehrere Taktiken um, aber macht auch immer einen Kompromiss zwischen mehreren Qualitätsattributen. Die Aufgabe des Architekten ist das richtige Muster anhand des Kontexts und den Rahmenbedingungen zu finden. Er muss sich auch genau überlegen, wie der Kompromiss des Musters die eigene Lösung beeinflusst. Ein Muster wird immer durch den Kontext, das Problem und die Lösung beschrieben.
 
-Um ein System oder eine Komponente in eine bestehende Umgebung einzubinden existieren folgende vier Patterns (Enterprise Integration Patterns):
+Um ein System oder eine Komponente in eine bestehende Umgebung einzubinden existieren folgende vier Patterns (Enterprise Integration Patterns, Technologie unabhängig):
 \begin{itemize}
 	\item File Transfer
 	\item Shared Database
