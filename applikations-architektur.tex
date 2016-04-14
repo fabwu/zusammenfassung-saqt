@@ -251,6 +251,158 @@ Mit Usability ist die Benutzerfreundlichkeit eines Systems gemeint. So soll z.B.
 Die Wiederverwendbarkeit ist eine Eigenschaft des Systems zur Entwicklungszeit. Weisen die Komponenten hohe Wiederverwendbarkeit können Kosten gespart werden in dem viele fast gleiche Systeme gebaut werden.
 
 \section{Prinzipien \& Taktiken}
+Der Architekt muss Entscheidungen treffen und diese in der Systemstruktur umsetzen. Das heisst oft, dass Kompromisse gefunden werden müssen. Grundlegend werden gute Ideen wiederverwendet und neue Ideen müssen früh validiert werden. Zudem können Prinzipien \& Taktiken angewendet und Stile \& Muster eingesetzt werden. Prinzipien sind sehr allgemeine Richtlinien wobei Stile, Taktiken und Muster detaillierte Lösungsansätze für konkrete Entwurfsentscheidungen bieten.
+
+\subsection{Prinzipien}
+Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestaltung einer Architektur zur Anwendung kommen sollten. Mit dem Ziel die Komplexität zu reduzieren und die Flexbilität sowie die Änderbarkeit zu erhöhen. Die Prinzipien sagen nichts darüber aus wie sie konkret angewendet werden! Nachfolgen einige Prinzipien:
+
+\begin{description}
+	\item[Lose Kopplung (Loose Coupling)] Jede Form der Abhängigkeit zwischen zwei Komponenten stellt eine Kopplung dar. Pro Abhängigkeit wird Erzeuger wie Verbraucher definiert. Der Verbraucher ist abhängig vom Erzeuger. Das Ziel ist es, dass der Erzeuger möglichst unabhängig vom Verbraucher geändert werden kann. Lose Kopplung erreichen wir durch Abstraktion, Separation of Concerns, Information Hiding, Messages Queues, etc.
+	
+	Auch das uns bekannte Hollywood-Prinzip fördert die lose Kopplung. Mittels \emph{Dependency Inversion} definieren wir die Schnittstelle mit der unserer Komponente arbeitet selbst. Andere Komponenten müssen diese Schnittstelle implementieren. Und \emph{Dependency Injection} überträgt die Verantwortung für das Erzeugen von Komponenten an ein externes Framework. Die Abhängigkeiten werden im Framework verwaltet.
+	
+	\item[Hohe Kohäsion (High Cohasion)] Der innere Zusammenhalt einer Komponente sollte möglichst gross sein. Eine Komponente lässt sich so leicht ändern, wenn sie alle relevanten Eigenschaften enthält um sie zu verstehen. Der Einsatz von Abstraktion, Separation of Concerns sowie Information Hiding fördert die Kohäsion.
+		
+	\item[Entwurf für Veränderung (Design for Change)] Vorhersehbare Änderungen architektonisch vorausplanen. Aber genauso sollen nicht vorhersehbare Änderungen auch unberücksichtigt bleiben, sonst wird man nie fertig und das Problem der zu flexibeln Architektur entsteht. Wir verwenden lose Kopplung, Abstraktion, Modularität, Seperation of Concern und Information Hiding.
+	
+	\item[Trennung der Verantwortlichkeiten (Separation of Concerns)] Die Verantwortlichkeiten von Komponenten sind genau zu definieren. Die Komponenten soll nur genau das Eine tun, dafür vollständig! Verschiedene Aspekte von Probleme sind zu trennen. Für die Zerlegung gibt es mehrere Ansätze: Anforderungen, Software-System in eine Struktur von Systembausteinen, komplexe Architektur-Beschreibung in Sichten, organisatorische Verantwortlichkeiten, Prozesse der Architektur-Erstellung in Teilprozesse.
+	Mittels Modularität kann die Zerlegung auf der Basis auf den funktionalen Anforderungen erfolgen. Beispielsweise: Benutzerschnittstellen, Bestellabwicklung, Datenbankzugriff, etc. Zudem kann es auch Sinn machen, wenn wir die technischen Schichten weiter mittels fachlichen Schichten trennen (siehe Bild \ref{fig:schichten-architektur})
+	
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{fig/schichten-architektur}
+	\caption{Schichten-Architektur: Technische wie fachliche Trennung}
+	\label{fig:schichten-architektur}
+	\end{figure}
+
+	\item[Geheimhaltung (Information Hiding)] Alles verbergen, was nicht benötigt wird. So entstehen keine unnötigen Abhängigkeiten. In der OOP alle Daten als privat markieren. Ein Fassade Pattern kann dazu dienen, alles andere zu verstecken. Bei der Schichtung kann die darüberliegende Schicht nur auf die darunterliegende Schicht zugreifen.
+	
+	\item[Abstraktion] Bei der Abstraktion werden wichtige Aspekte identifiziert und unwichtige Details vernachlässigt. Es ist schlussendlich ein Spezialfall der Geheimhaltung. Das wichtigste Teilprinzip nennt sich \emph{Schnittstellensabstraktion}, denn erst durch die Beziehungen der Bausteine eines Systems untereinander kommt eine Architektur wirklich zum Tragen. Mittels Geheimhaltung und Abstraktion wird die Portabilität der Architektur gestärkt (Plattform-Unabhängigkeit). Folgendes noch zur Schnittstellensabstraktion:
+	
+	\begin{itemize}
+		\item Alle Schnittstellen werden explizit angegeben, Kommunikation nach aussen nur über diese Schnittstellen möglich.
+		\item Trennung von Schnittstelle und Implementierung.
+		\item Liskov-Substitution: Erbende Klassen durch die Schnittstelle der vererbende Klasse aufrufbar.
+		\item Schnittstelle-Segregation: Ein Klient soll nie auf einer Schnittstelle basieren, die er nie benutzt. Komplexe Schnittstellen in mehrere einzelne Schnittstellen auftrennen.
+		\item Design by Contract: Vor-, Nachbediengungen sowie Invarianten einer Schnittstelle explizit angeben.
+	\end{itemize}
+		
+	\item[Modularität] Zerlegung eines Systems in definierte Systembausteine, deren funktionale Verantwortlichkeiten klar abgegrenzt sind. Systembausteine leicht austauschbar und in sich abgeschlossen. Diese sind überschaubar, verstehbar, leicht wartbar und wiederverwendbar.Einfache und stabile architektonische Beziehungen. Kombination von Abstraktion, Separation of Concerns und Information Hiding.
+	
+	Bausteine sollen offen für Veränderungen sein (Entwurf für Veränderung) und geschlossen für die Nutzung der internen Details durch andere Systembausteine (Abstraktionen, Geheimhaltung).
+	
+	\item[Rückverfolgbarkeit (Traceability)] Architektonische Strukturen und Entscheidungen durchgängig von den Anforderungen über die Modelle zum Code verfolgbar. Dies soll die Verständlichkeit der Architektur erhöhen. Wichtig ist, dass einheitliche Namenskonventionen verwendet werden. Leichter verstehbare Strukturen sind unabhängiger voneinander und leichter zu ändern.
+	
+	\item[Selbstdokumentation] Jede Information über einen Systembaustein sollte zum Bestandteil des Systembausteins selbst gemacht werden. In der Realität laufen Dokumentation und Software jedoch schnell auseinander. Nach Möglichkeit soll die Dokumentation genau dort gemacht werden, wo die Software entsteht. Unterstützt so auch die Rückverfolgbarkeit.
+	
+	\item[Inkrementalität] Inkrementalität bedeutet, das Prinzip der Trennung der Verantwortlichkeiten auf die Entwicklungsschritte bei der Systementwicklung anzuwenden. Früh erste Version ausliefern, früh die Meinung von Benutzer einholen, neue Funktionen nur schrittweise einführen (piecemeal growth).
+	
+\end{description}
+
+Bild \ref{fig:abhangigkeiten-prinzipien} zeigt die Beziehung der einzelnen Prinzipien untereinander.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.6\linewidth]{fig/abhaengigkeiten-prinzipien}
+	\caption{Abhängigkeiten von Prinzipien}
+	\label{fig:abhangigkeiten-prinzipien}
+\end{figure}
+
+\subsection{Taktiken}
+\emph{There are many was to do design badly, and just a few ways to do it well.} Taktiken definieren Richtlinien zur Verbesserung der Architektur. Sie sollen als Hilfe für den Architekten dienen eine erste Idee zu einem Entwurfsproblem zu erhalten. \textbf{Eine Taktik ist eine Entwurfsentscheidung, die Einfluss nimmt auf die Realisierung der Reaktion eines Qualitätsattributszenarios.}. Bestimmt somit mit welchem Response das System auf einen Stimulus eines Qualitätsattributs reagiert. Dabei werden keine Kompromisse (Trade-offs) berücksichtigt.
+
+Für alle Taktiken kann man sicher immer folgende Entscheidungen überlegen (7 Arten von Entscheidungen):
+\begin{itemize}
+	\item Zuordnung von Verantwortlichkeiten: Welche Elemente im System sind für welche Funktionen und Qualitätsattribute verantwortlich?
+	\item Koordinationsmodel: Wie interagieren welche Elemente? Welche dürfen nicht interagieren?
+	\item Datenmodell (inkl. Datenhaltung)
+	\item Resourcenmanagement: Wie werden welche Resourcen "gemanaged", "geshared"? Welcher Resourcenbedarf besteht?.
+	\item Zuordnungen von Architekturelementen (mapping): Innerhalb der Architektur: z.B. Module und Laufzeit-prozesse oder innerhalb Umgebung: z.B. Prozesse und CPU Elemente.
+	\item Binding time decisions: Variabilität in der Architektur.
+	\item Technologiewahl: Vorgegeben als Constraint oder Wahl des Architekten
+\end{itemize}
+
+
+\begin{description}
+	\item[Taktiken für Verfügbarkeit] Die Verfügbarkeit wird durch Failures (Service kann nicht mehr erbracht werden) und Faults (Mangel, Defekt, kann ein Failure werden) eingeschränkt. Taktiken für die Verfügbarkeit zielen darauf ab, dass das System Faults abfangen kann, dass kein Failure entsteht.
+	
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/tactic-availability}
+	\caption{Availability-Taktiken}
+	\label{fig:tactic-availability}
+	\end{figure}
+	
+	\item[Taktiken für Modifiability]
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/tactic-modifability}
+	\caption{Taktiken für Modifiability}
+	\label{fig:tactic-modifability}
+	\end{figure}
+
+	\item[Taktiken für Performance]
+	\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/tactic-performance}
+	\caption{Taktiken für Performance}
+	\label{fig:tactic-performance}
+	\end{figure}
+	
+\end{description}
+
+\subsection{Systemidee entwickeln}
+Eine erste Systemidee kann entwickelt werden, wenn wir die Prinzipien und Taktiken auf das Entwurfsproblem angewendet werden. Es ist ein kreativer Prozess, es gibt mehr als eine Lösung, Kompromisse finden, die richtigen Fragen stellen und bewährte Lösungen wiederverwenden.
+
+Architektur heisst Entscheidungen treffen: \emph{A software system's architecture is the set of principal design decisions made about the system}. Welches immer auf Kompromisse basiert. Es können nie alle Qualitätsattribute zu 100 Prozent erfüllt werden - trade off finden!
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/architectural-thinking}
+\caption{Architectural Thinking}
+\label{fig:architectural-thinking}
+\end{figure}
+
+\subsection{Domain-Driven-Design}
+Genauso wichtig wie die vielen technischen Komponenten ist die Fachdomäne (Domain-Driven-Design). Ein stabiles und akzeptiertes Domänenmodell ist fundamental. Als Basisbausteine dienen: Entities (unverändlichere Idendität, klarer Lebenszyklus, meist persistent), Value Objects (Beschreiben Zustand anderer Objekte) und Services (Abläufe, Prozesse).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/domain-driven-design}
+\caption{Domain-Driven-Design}
+\label{fig:domain-driven-design}
+\end{figure}
+
+\subsection{Zentralisierung vs. Dezentralisierung}
+Immer wieder stellt sich der Architekt die Frage ob er einen Aspekt in der Architektur in einem Baustein bündeln oder auf mehrere Bausteine verteilen soll? Im Vordergrund stehen Einfachheit, Schlichtheit und Verständlichkeit. Die Zentralisierung bietet folgende Vorteile: Hohe Datensicherheit, leichte Systemintegraton, Ausfallsicherheit leichter zu gewährleisten, einfacher zu administrieren. Es besteht jedoch die Gefahr von Monolithen, eventuell hohe Hardware-Kosten, Hersteller- und Technologie Abhängigkeiten. Die Dezentralisierung bietet tendenziell niedrige Hardware-Kosten, höhere Flexibilität und kleinere Komponenten. Jedoch ist der Integrationsaufwand höher, Abhängigkeit von Netz sowie schwieriger zu administrieren.
+
+\subsection{Empfehlungen für den Entwurf von Systemstrukturen}
+\begin{itemize}
+	\item Komponentenfunktionalität ist wohldefiniert und setzt Geheimnisprinzip und Trennung der Verantwortlichkeiten um.
+	\item Schnittstellen sind wohldefiniert und "verstecken" Veränderungen.
+	\item Entwicklungsteams können Komponenten unabhängig voneinander umsetzen auf der Basis der Schnittstellen-definitionen.
+	\item Taktiken und Muster werden eingesetzt.
+	\item Architektur darf niemals von einem bestimmten Produkt/Tool abhängen.
+	\item Daten produzierende und Daten konsumierende Module sind klar voneinander getrennt.
+	\item Es muss keine 1-1 Beziehung zwischen (Entwicklungs)-modulen und (Runtime)-Komponenten geben.
+	\item Prozesse sollten leicht änderbar sein, ggf. zur Laufzeit.
+	\item Nur wenige Arten von Interaktion sollten im System vorhanden sein.
+	\item Die gleiche Art von Interaktion sollte gleich umgesetzt werden.
+	\item Ressourcenkonflikte sind eingegrenzt und ihre Auflösung ist klar definiert.
+\end{itemize}
+
+\subsection{Empfehlungen für den Prozess des Entwurfs}
+\begin{itemize}
+	\item Die Architektur sollte von einem einzelnen Architekten oder einem kleinen Team entworfen worden sein.
+	\item Es sollte eine enge und produktive Beziehung zwischen dem Architektenteam und dem Entwicklungsteam bestehen.
+	\item Entwürfe basieren auf einer aktuellen priorisierten Liste der Qualitätsattribute.
+	\item Sichten für die wichtigsten Stakeholder werden erstellt.
+	\item Evaluation der Entwürfe passiert frühzeitig u. wird bei Änderungen wiederholt.
+	\item Die Architektur untersützt einen inkrementellen Entwicklungsprozess.
+	\item Conway's Law: Architektur = Team Organisation
+\end{itemize}
+
+It states that organizations which design systems ... are constrained to produce designs which are copies of the communication structures of these organizations — M. Conway.
 
 \section{Stile und Muster}
 
