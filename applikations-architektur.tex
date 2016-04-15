@@ -568,6 +568,118 @@ Durch Messaging wird eine lose Kopplung unter den einzelnen Systemen erreicht. D
 
 \section{Sichten, Architekturentscheidungen und Dokumentation}
 
+\subsection{Sichten}
+
+Eine Sicht stellt ein vollständiges System aus dem Blickwinkel einer Menge von zusammenhängenden Interessen heraus dar. Warum benötigten wir überhaupt Sichten?
+
+\begin{itemize}
+	\item Moderne Software ist oft zu komplex, um sie als Gesamtheit anschauen und verstehen zu können.
+	\item Wir müssen unsere Aufmerksamkeit zu jedem Zeitpunkt auf einen (oder wenige) Teile der Systemstruktur lenken.
+	\item Um problemlos kommunizieren zu können, müssen wir klar machen, welche Strukturen (oder auch Verhalten) wir jetzt diskutieren.
+\end{itemize}
+
+Zusammenfassend dient eine Sicht um eine Struktur darzustellen - sie sichtbar zu machen. Architekten entwerfen Strukturen und dokumentieren diese Strukturen durch Sichten. Gute Sichten sind:
+
+\begin{itemize}
+	\item Bedarfsgerecht
+	\item So wenig Formalismus wie möglich, so viel wie nötig!
+	\item Umfang der Sicht am Risiko orientiert
+	\item Top-down arbeiten und Sichten weiter verfeinern
+	\item Wenn die von uns intendierte Botschaften korrekt beim Empfänger angelangt.
+\end{itemize}
+
+Die Sichten sind das Resultat aus dem Entwurf und sind fundamental für das Kommunizieren der Architektur. Da es unterschiedliche Beteiligte gibt, welche unterschiedliche Brillen tragen, brauchen wir unterschiedliche Sichten.
+
+Es gibt unterschiedlichen Sichtenmodelle. Sowohl Kruchten wie auch Starke haben eigene Modelle definiert. Beide bestehen grundsätzlich aus der Kontext-, der Laufzeit-, der Baustein- und der Verteilungssicht. Nach Kruchten gibt es noch die Szenarios.
+
+\begin{description}
+	\item[Kontextsicht] Dient als Übersichtsdiagramm zum Umfeld des Systems. Es dient für die Ressourcenplanung und fürs Risikomanagement. Darauf kann die Anzahl \& Art der Schnittstellen nach aussen, der Abhängigkeiten der Umsystemen sowie die beteiligten Stakeholder erkennen.
+	
+	Best-Practice: Zeichne dein System als Kasten und gib diesem einen Namen. Zeichne Umsysteme als Kasten und Rollen als Personen. Verknüpfe die Personen und Systeme mit deinem System und schreibe, welche Daten ausgetauscht werden. Achtung: Use Case ist kein Kontextdiagramm. Die Abhängigkeiten, welche die Umsysteme gegenseitig haben, interessieren eigentlich nicht.
+	
+	\item[Bausteinsicht] Die Bausteinsicht soll aufzeigen, wie das System intern aufgebaut ist. Es ist von statischen Strukturen wie Subsysteme, Komponenten und deren Schnittstellen die Rede.
+	
+	In der Regeln arbeiten wir Top-Down. Die letzte Verfeinerungsstufe ist der Quellcode selbst. Es soll den Projektleiter und Auftraggeber unterstützen. Dient ideal um Arbeitspakte zuzuteilen und ist allgemein die Referenz für die Entwickler.
+	
+	In UML können wir Klassendiagramme, Packetdiagramme oder Komponentendiagramme verwenden.
+	
+	\item[Laufzeitsicht] Im Zentrum stehen die dynamischen Strukturen und Abläufe. Welche Bausteine existieren zur Laufzeit? Wie wirken diese zusammen?
+	
+	In UML würden wir Aktivitätsdiagramme verwenden. Aber wir verwenden BPMN. Auf technischer Ebene kommen Sequenzdiagramm zum Einsatz.
+	
+	\item[Verteilungssicht] In welcher Umgebung läuft das System? Systeme aus Betreibersicht. Verteilung des System auf die physischen Systeme (Hardware, Netzwerk, Rechner, Prozessoren, Protokolle, etc.). In UML ist das Verteilungsdiagramm die erste Wahl.
+\end{description}
+
+Meine persönliche Empfehlung ist eine Datensicht. Mit einem einfachen konzeptuellen Datenmodell kann die Fachdomäne schnell verstanden werden. Zudem haben wir die Security-Sicht sowie User Experience nicht behandelt.
+
+\subsection{Architektur-Ebenen}
+
+Ein Architekt bewegt sich auf unterschiedlichen Architektur-Ebenen. Er muss sich bewusst sein, auf welcher Ebene er sich aktuell befindet und was seine Entscheidung auf der Ebene bewirken. Es wirken unterschiedliche Kräfte auf die Architektur. Die Bausteinebene wird von der Systemebene beeinflusst und auf die Systemebene wirken die Kräfte der Organisationsebene (Definition nach Vogel).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/architekur-ebenen}
+\caption{Architektur-Ebenen}
+\label{fig:architekur-ebenen}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/architekur-ebenen-und-dimensionen}
+\caption{Architekur Ebene und Dimensionen}
+\label{fig:architekur-ebenen-und-dimensionen}
+\end{figure}
+
+Zimmerann unterscheidet nach folgenden Ebenen:
+\begin{itemize}
+	\item Exekutive Ebene: Architekturstil
+	\item Konzeptuelle Ebene: Architekturmuster
+	\item Technologie Ebene: Java EE oder .NET?
+	\item Hersteller Ebene: IBM oder Oracle
+\end{itemize}
+
+\subsection{Dokumentation der Architektur}
+Der Architekt dokumentiert seine Ergebnisse oft in ein Dokument mit folgenden Bezeichnungen: Architektur-Gesamtdokument, Architektur-Referenz, Architecture-State-of-the-Art.
+
+Diese enthalten die sogenannten \emph{work products}:
+\begin{itemize}
+	\item Aufgabenstellung, Anforderungen und Ziele, Stakeholder
+	\item Randbedingungen und Kontextsicht
+	\item Weitere Sichten, Begriffsglossare
+	\item Entwurfsentscheidungen und verwendete Muster
+	\item Szenarien zur Architekturbewertung
+	\item Risiken, change requests, Projektaspekte
+\end{itemize}
+
+Firmen definieren meistens selbst, was sie in einem Architektur-Dokument sehen wollen. Es gibt aber auch diverse Standards: DoDAF, TOGAF, UMF, ARC42, ISO 10746, IEEE 1471/ ISO 42010.
+
+Folgendes gilt es zu beachten, wenn eine gute Dokumentation entstehen soll:
+\begin{itemize}
+	\item Klarheit schaffen und für einheitliches Verständnis unter Stakeholdern sorgen (Begriffe definieren u. konsistent verwenden)
+	\item Dokumentation strukturieren und Struktur kommunizieren
+	\item Das Warum dokumentieren: Entscheidungen, Alternativen, Ergebnis mit Begründung.
+	\item Redundanz vermeiden
+	\item Konsistenz von Diagrammen und Sichten sichern
+\end{itemize}
+
+Folgende Fragen sollte eine Dokumentation beantworten:
+\begin{itemize}
+	\item Wie fügt sich das System in seine Umgebung ein, insbesondere in seine technische Infrastruktur?
+	\item Wie ist das System als Menge von Implementierungs-einheiten strukturiert und welche Beziehungen gibt es zwischen diesen?
+	\item Wie verhalten sich die Bausteine zur Laufzeit und wie arbeiten sie zusammen?
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/gute-architektur-dokumentation}
+\caption{Gute Architektur Dokumentation}
+\label{fig:gute-architektur-dokumentation}
+\end{figure}
+
+Eine \textbf{Architekturentscheidung} muss folgende vier Punkte beinhalten: Problem (issue), Alternativen (alternatives), getroffener Entscheid (outcome) und Begründung (rationale). 
+
+
+
 \section{Bewertung von Architekturen (ATAM)}
 
 \section{Beruf des IT Architekten}
