@@ -154,3 +154,79 @@ Zudem stellt sich immer die Frage ob die Fehler reproduzierbar sind. Man spricht
 	\item B: Nicht ohne weiteres reproduzierbar, aber wiederholt aufgetreten.
 	\item C: Nicht reproduzierbar.	
 \end{itemize}
+
+\subsection{Schritt 4: }
+tbd. in Testen 3 vorhanden...
+
+\newpage
+\section{Nichtfunktionale Anforderungen und der Testquadrant}
+
+\subsection{Der Nutzen von Testen}
+
+\begin{itemize}
+	\item Das Testbudget kann eingeplant werden, Kosten für Nachbesserungen nicht.
+	\item Fehler kosten Geld, Testen stellt sicher, dass Fehler früher systematisch erkennt werden.
+	\item Ein konsequent gelebter Testprozess hat auch positiven Einfluss auf die Beschreibung der Anforderungen - es kann schlussendlich schneller entwickelt werden.
+	\item Mittels eines Testprozess ist man gezwungen, dass Fehler, Änderungen und Neuanforderungen genau umschrieben werden.
+	\item Testmanagement ist Führungsarbeit und gerade in agilen Prozessen dank nachweisbaren Fakten oft das einzig stete und somit verlässliche.
+\end{itemize}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-1}
+\caption{Testen Nutzen 1}
+\label{fig:testen-nutzen-1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-2}
+	\caption{Testen Nutzen 2}
+	\label{fig:testen-nutzen-2}
+\end{figure}
+
+
+\subsection{NFA}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.7\linewidth]{fig/nfa-testing}
+\caption{NFA Testing}
+\label{fig:nfa-testing}
+\end{figure}
+
+\subsection{Agile Testquadrant nach Brian Mark}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\linewidth]{fig/testquadrant}
+\caption{Testquadrant}
+\label{fig:testquadrant}
+\end{figure}
+
+\begin{description}
+	\item[Quadrant 1 - unten links] Repräsentiert die Test getriebene Entwicklung - die Kernkomponente agiler Entwicklung. Die Unit- und Komponenten Tests in diesem Quadranten sind nicht unbedingt die ersten Tests die für eine bestimmte User Story geschrieben werden aber sie führen Design und Entwicklung an den richtigen Lösungsweg heran.
+	
+	\item[Quadrant 2 - oben links] Diese Tests unterstützt die Entwickler Teams auf einem höheren Niveau, denn sie sind am Geschäftsfall orientiert. Sie testen die extern wahrgenommene Qualität der vom Kunden definierten Features oder Anforderungen. Diese Tests treiben die Entwicklung auf einem höheren Level. Diese Tests werden von Business Experten leicht verstanden und aus diesem Grund in eine für sie lesbaren Sprache geschrieben. Hier auch - besser den Test vorher schreiben und erst danach implementieren. So kann der Entwickler es eigentlich gar nicht falsch implementieren. User Story sind oft zu unpräzise um den Need des Kunden genau zu spezifizieren. Daher eignet sich auch das Prototyping mit Hilfe diesen Tests.
+	
+	\item[Quadrant 3 - oben rechts] Das Reich der manuellen Tests! Es gibt exploratives, session-based, scenario sowie usability Testing. Darunter soll nicht nur die funktionalen Anforderungen getestet werden sondern auch die Nicht funktionalen Anforderungen. Beim explorativen Testen geht der Tester an die Software ran und schreibt quasi on the way die Testfälle und versucht "Fehler" zu finden. Diese haben sehr viel mit menschlicher Intelligenz sowie Intuition und Erfahrung zu tun. Daher sind diese schwer automatisierbar. Um hochwertige Software zu garantieren, reicht dieser Ansatz alleine nicht aus!
+	
+	\item[Quadrant 4 - unten rechts] Das Reich der NFA! In erster Linie werden hier nur NFA berücksichtigt. Dazu zählen wir Last-, Performance-, Security- und alle anderen ility-Tests. Obwohl sich diese Tests im letzten Quadranten befinden, sollen diese nicht erst am Schluss ausgeführt werden, sondern sobald wie möglich. Diese Tests können frühzeitig Schwachstellen der Architektur aufdecken. Probleme an dieser Stelle können zu grossen Umbauarbeiten führen. Die Erstellung dieser Tests ist mit grossem Aufwand verbunden. Für diese Tests sollten unbedingt entsprechende User Stories geschrieben werden - wobei Tool evaluiert werden und die Testumgebung definieren.
+	
+	\emph{Last- und Performance-Tests} erfordern oft erweitertes Fachwissen. Es braucht viel Vorlaufzeit und sind entsprechend aufwändig. Mittels Performance-Tests können Flaschenhälse im System ausgemacht werden. Load Tests stellen sicher, dass eine Applikation auch mit grosser Anzahl von gleichzeitigen Zugriffen fertig wird. Es gibt eine Reihe von Open Source Tools: JunitPerf, httperf, Apache JMeter, The Grinder, Pounder, ftptt, OpenWebLoad. Es gibt auch kommerzielle Tools. Die Evaluation und Einarbeitung in ein solches Tool braucht Zeit! Man sollte einmal eine Null-Linie definieren. Diese definiert den Ausgangspunkt von dem man sich verbessern möchte und kann so vergleichen - ob man wirklich Fortschritte erzielt. Es ist dabei wichtig, dass wir die Test reproduzierbar machen, in dem alle Faktoren dokumentiert werden (Hardware, System, Versionen usw.). Dabei sollte man sich auch immer um den Speicherverbrauch kümmern um allfälligen Memory-Leaks vorzubeugen - also messen! All diese Themen sollt ein Kapitel im Testplan gewidmet werden!
+	
+	Bei der \emph{Skalierbarkeit} geht es darum, dass auf einen Schlag mehr Benutzer die Applikation verwenden und das System diese doch verkraftet bzw. entsprechend skaliert werden kann.
+	
+	Für \emph{Security-Test} werden besser interne oder externe Spezialisten hinzugezogen. Sicherheitslöcher sind für eine Reputation einer Firma nicht gut und sollten dementsprechend prioritär behandelt weden.
+	
+	Die \emph{Wartbarkeit} kann nicht einfach so getestet werden. Sauber geschriebenen und kommentierten Code erhöhen die Wartbarkeit eines Systems. Es können Code-Guidlines definiert werden, allg. gültigste Standards und Konventionen sind einzuhalten, QS sollte auch Code- und Designreviews durchführen. Oder auch Pair-Programming oder die Clean-Code Bewegung sollten dazu führen.
+	
+	\emph{Kompatiblität und Interoperabilität} haben eine grosse Bedeutung wenn das System auf unterschiedlichen Systemen/Browser laufen muss. Das Testing kann schnell in ungeahnte Dimensionen steigen, wenn x-Geräte/Browser berücksichtigt werden müssen. Vielleicht sollte man auch auf Anbieter zurückgreifen, welche das für einen machen.
+	
+	\emph{Barrierefreiheit} - Kann die Applikation auch von sehbehinderten Menschen bedient werden? Warum grenzen wir diese aus?
+	
+	\emph{Zuverlässigkeit} beschäftigt sich mit der Frage, wie lange das System lauft bis es abstürzt oder einfriert. Kennzahlen sind hier MTF (mean time to failure) und MTBF (mean time between failures). Um das 1:1 testen zu können, braucht man oft einen langen Zeitraum um die Langzeitstabilität zu prüfen, was oft gar nicht möglich ist.
+	
+	Die \emph{Installierbarkeit} kann mit virtuellen Maschinen sehr gut und effizient verifiziert werden.
+	 
+\end{description}
