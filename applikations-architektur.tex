@@ -410,6 +410,94 @@ Durch Messaging wird eine lose Kopplung unter den einzelnen Systemen erreicht. D
 
 \section{Bewertung von Architekturen (ATAM)}
 
+Bei der Bewertung einer Architektur sollte man immer beachten, dass es nicht die gute oder schlechte Architektur gibt. Eine Architektur kann aber besser oder schlechter zu einem Verwendungszweck passen. Softwarearchitektur kann nur qualitativ bewertet werden. Es sind zwar quantitative Messungen möglich (Änderungshäufigkeit der Anforderungen, Testabdeckung, Bugs während Implementierung, Codemetriken usw.), dieser sind aber meist nicht sehr sinnvoll. Was wir aber haben sind die Antwort Metriken (Response Measures) der Szenarien.
+
+Immer wenn eine Schlüssel-Entscheidung getroffen wird oder ein Meilenstein erreicht wird, sollten die gewählten Entscheidungen und mögliche Alternativen analysiert werden (Wie wichtig ist Entscheidung? Wie viele Alternativen gibt es?). Die Kosten der Analyse dürfen natürlich die Kosten einer Fehlerentscheidung nicht übersteigen. Eine Methode um diese Bewertung durchzuführen ist die Architecture Tradeoff Analysis Method (ATAM). Bei ATAM gibt es folgende drei Gruppen von Beteiligten:
+\begin{description}
+	\item[Evaluatoren:] ausserhalb des Projektes, ATAM Experten
+	\item[Projektentscheider:] Architekt, Projekt Leiter, Product Owner
+	\item[Architektur Stakeholder:] Haben Interesse an funktionierender Architektur und formulieren deshalb die Qualitätsattribute (Entwickler, Tester, Benutzer).
+\end{description}
+ATAM ist eigentlich eine Risikoanalyse, welche einen Zusammenhang zwischen den Architekturentscheidungen und dem zu erwarteten Systemverhalten findet. Abbildung \ref{fig:atam} zeigt einen Überblick über die wesentlichen Elemente von ATAM.
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{fig/atam}
+\caption{ATAM Übersicht}
+\label{fig:atam}
+\end{figure}
+ATAN läuft nach folgendem Schema ab:
+\begin{enumerate}
+	\item Stakeholder zusammenbringen
+	\item ATAM erklären
+	\item Business Driver/Kontext für Systementwicklung zusammenfassen
+	\item Architektur vorstellen - Stile sind wichtig
+	\item Qualitätsbaum aufbauen
+	\begin{enumerate}
+		\item Attribute hierarchisieren und Bedeutung quantifizieren
+		\item Szenarien definieren und priorisieren
+	\end{enumerate} 
+	\item Szenarien und Architektur gegenüberstellen
+	\item Risiken, sensible Punkte, Kompromisse identifizieren
+	\item Massnahmen definieren
+\end{enumerate}
+Falls die Analyse nicht die gewünschten Ergebnisse liefert oder sich die Anforderungen an das System geändert haben, muss man den Ablauf gegebenenfalls wiederholen. Führt man eine ATAM Analyse korrekt durch ergeben sich folgende Vorteile daraus:
+\begin{itemize}
+	\item Klärung von nichtfunktionalen Anforderungen und Qualitätsattributen
+	\item Verbesserte Dokumentation von Architektur und Architekturentscheidungen
+	\item Intensivierte Diskussion zwischen Stakeholdern
+	\item Frühe Erkennung von Risiken, wenn früh durchgeführt (RISIKO: ATAM ist zeitaufwendig!)
+\end{itemize}
+Eine ATAM Analyse liefert folgende Ergebnisse:
+\begin{itemize}
+	\item Eine präzise und verständliche Darstellung der Architektur
+	\item Formulierung der Geschäftsziele
+	\item Priorisierte Anforderungen der Qualitätsattribute in Form von Szenarien
+	\item Risiken (Eine Architekturentscheidung, die negative Auswirkungen auf ein Szenario hat, ist ein Risiko)
+	\item Risikothemen: Welche systematischen Schwächen in der Architektur (oder auch im Team oder im Prozess) führen zu den Risiken?
+	\item Beziehung der Architekturentscheidungen zu den Qualitätsattributen
+	\item Sensible Punkte und Kompromisse (Architekturentscheidungen mit Auswirkungen auf ein oder mehrere Qualitätsattribute)
+\end{itemize}
+Zentral sind dabei die nachfolgend beschriebenen Konzepte:
+
+\subsubsection{Qualitätsbaum (Utility Tree)}
+
+Ein Qualitätsbaum stellt die Qualitäten mit den Szenarien in Verbindung. Die Szenarien werden dabei gewichtet (z.B. nach Wahrscheinlichkeit/Auswirkung). Abbildung \ref{fig:utility-tree} zeigt ein Beispiel für einen Qualitätsbaum.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/utility-tree}
+\caption{Qualitätsbaum}
+\label{fig:utility-tree}
+\end{figure}
+
+\subsubsection{Risiken und Nicht-Risiken (Risks/Non-Risks)}
+
+Eine Architekturentscheidung kann entweder ein Risiko für ein Qualitätsattribut sein oder ein Nicht-Risiko wenn die Entscheidung das Qualitätsattribut unterstützt. Nachfolgend je ein Beispiel für ein Risiko und für ein Nicht-Risiko:
+\begin{quote}
+	Der Backup der Datenbank stellt ein Risiko für die Performanz des Systems dar, wenn eine hohe Systemleistung mit hohen Kosten verbunden ist.
+\end{quote}
+
+\begin{quote}
+	Der Backup ist kein Risiko bei geringen Kosten für die Systemleistung.
+\end{quote}
+Ändern sich die Anforderungen an ein System, müssen die Entscheidungen nochmals überprüft werden, weil aus einem Nicht-Risiko ein Risiko werden könnte und umgekehrt.
+
+\subsubsection{Sensible Punkte (Sensitivity Points)}
+
+Sensible Punkte sind Architekturentscheidungen, die bei einer geringfügigen Änderung grosse Auswirkungen auf ein Qualitätsattribut haben. Nachfolgend ein Beispiel für einen sensiblen Punkt:
+
+\begin{quote}
+	Der tägliche Backup der Datenbank ist wichtig für die Zuverlässigkeit des Systems.
+\end{quote}
+
+\subsubsection{Kompromisse (Tradeoffs)}
+
+Kompromisse sind Architekturentscheidungen, die Auswirkungen auf mehrere Qualitätsattribute haben. Nachfolgend ein Beispiel für einen Kompromiss:
+
+\begin{quote}
+	Der Backup der Datenbank sichert die Zuverlässigkeit, aber beeinträchtigt die Performanz des Systems.
+\end{quote}
+
 \section{Beruf des IT Architekten}
 
 \section{Fallstudie Fillialbestellsystem aus Modul Applikationsentwicklung}
