@@ -1,5 +1,7 @@
 \chapter{Software Testing}
 
+tbd. here chapter 1
+
 \section{Test-Prozess}
 
 Innerhalb des Test-Prozess arbeiten mehrere Personen mit unterschiedliche Rollen:
@@ -156,7 +158,7 @@ Zudem stellt sich immer die Frage ob die Fehler reproduzierbar sind. Man spricht
 \end{itemize}
 
 \subsection{Schritt 4: }
-tbd. in Testen 3 vorhanden...
+tbd. here chapter 3
 
 \newpage
 \section{Nichtfunktionale Anforderungen und der Testquadrant}
@@ -230,3 +232,77 @@ tbd. in Testen 3 vorhanden...
 	Die \emph{Installierbarkeit} kann mit virtuellen Maschinen sehr gut und effizient verifiziert werden.
 	 
 \end{description}
+
+tbd. here chapter 5
+
+\section{Testkonzept}
+
+Idee:
+\begin{itemize}
+	\item Jeder Plan ist besser als kein Plan
+	\item Schreiben ist exaktes Denken
+	\item Testen bedingt einer Strategie
+	\item Um WAS geht es > \emph{Big Picture}
+	\item Ein- und Abgrenzen, um was geht es nicht
+	\item Klären von Prioritäten (risikobasiert)
+	\item Definieren des Vorgehens (Prozess) mit Hilfsmittel, Rollen und Verantwortlichkeiten
+\end{itemize}
+
+Struktur:
+\begin{description}
+	\item[Einleitung] Beinhaltet folgende Kapitel: Einleitung, Ziel u. Zweck, Geltungsbereich sowie geltende Dokumente u. Referenzen.
+	
+	\item[Testobjekt] Definition, welche Softwarekomponenten/Umsysteme getestet werden sollen (Scope) und was explizit nicht Bestandteil des Testprojekts ist (Constraints). Das Komponentendiagramm kann als Basis dienen, um die Testobjekte zu identifizieren.
+	
+	\item[Testumfang] Definition, welche Qualitätsmerkmale und Qualitätskriterien getestet werden sollen. Ein Qualitätsmerkmal hat als Ausprägung mehrere Qualitätskriterien. Qualitätsmerkmale: Funktionalität, Zuverlässigkeit, Effizienz, Benutzbarkeit. Qualitätskriterien: Richtigkeit, Angemessenheit, Stabilität, Performance.
+	
+	\item[Kommunikationswege] Beschreibt die Kommunikationswege der Mitglieder des Testprojekts je nach Rolle. Rollen: Projektleiter, Product Owner, Testmanager, Testengineer, Tester.
+	
+	\item[Risikobetrachtung] Einstufung der Risiken nach Eintrittswahrscheinlichkeit und Schweregrad. Falls diese schon im Rahmen eines Risikomanagements geführt werden, kann hier auf das entsprechende Dokument verweisen werden. Für jedes Risiko braucht es auch Massnahmen. Man unterscheidet zwischen Produkt- und Projektrisiko.
+	
+	\item[Lieferobjekte] Welche Lieferobjekte entstehen aus dem Testprojekt und wer ist Empfänger (Auftraggeber, Kunde)?  Hier sind Lieferobjekte zu nennen, welche sich nicht auf eine bestimmte Teststufe beziehen. Beispiele: Testkonzept, Dokumentation der Testumgebung, Testdaten, Status-Reports, Final-Reports, Testscripts, Automatisierungscode.
+	
+	\item[Teststufen u. Lieferobjekte] Definition, ob folgende Teststufen durchgeführt werden: Komponententests, Integrationstests, Systemtests, Abnahmetests.  Hier evtl. auch abhängige Lieferobjekte listen.
+	
+	\item[Komponententests/Unit-Tests] Werden Unit-Tests durchgeführt? Wer führt diese durch? Wo werden diese definiert/beschrieben? Der Entwickler macht in der Regel Unit-Tests direkt in der Entwicklungsumgebung. Es kann auch auf einzelne Teststufen verzichtet werden, bspw. macht man oft keine Unterscheidung zwischen System- und Integrationstests.
+	
+	\item[Planung] Falls die Projektplanung nicht genügend detailliert vorliegt, wird hier die Terminplanung mit Aktivitäten auf der Zeitachse ausgewiesen (GANT-Chart der einzelnen Iterationen).
+	
+	\item[Abnahmetests] Beschreibung ob und wie der Abnahmetest durchgeführt wird.
+	
+	\item[Testabbruch] Beschreibt Kriterien unter welche das Testing ganz oder teilweise abgebrochen wird resp. wieder aufgenommen wird. Projektleiter und Testmanager stehen in der Regel in der Verantwortung.
+	
+	\item[Testaktivitäten] Beschreibt, welche Aktivitäten vor, während und nach dem Testprojekt durchgeführt werden. Auch Aktivitäten, die explizit nicht durchgeführt werden, sollten vollständigkeitshalber beschrieben werden.
+	
+	\subitem Analyse / Vorbereitung: Studium der Testbasis, Entwurf der Testfälle, Aufbau der Testinfrastruktur.
+	
+	\subitem Durchführung / Auswertung: Funktionale Tests, Bugtracking, Zwischenbericht, nicht funktionale Tests in Bezug auf Effizienz, Stabilität, etc.
+	
+	\subitem Abschluss: Verfassen Abschlussbericht, Datenarchivierung, Abschlusspräsentation.
+	
+	\item[Personal] Beschreibt, wer welche Rolle innerhalb des Testprojekts hat, ob zusätzliches Personal rekrutiert werden muss oder ob Ausbildungsbedarf beim aktuell definierten Projektteam besteht.
+	
+\end{description}
+
+Folgendes muss pro Teststufe dokumentiert werden:
+\begin{description}
+	\item[Testdesigntechniken] Beschreibung, wie die Testfälle hergeleitet werden. Beispiele: Review (Informell, Walktrough, Inspektion), Statische Analyse (Datenflussanalyse, Kontrollflussanalyse), Dynamische Analyse als Blackblox (Äquivalenzklassen, Grenzwertanalyse, Entscheidungstabelle Anwendungsfallbasiert).
+	
+	\item[Testendkriterien] Beschreibt, nach welchen Kriterien das Testende der jeweiligen Teststufe erreicht ist und die Tests als abgeschlossen betrachtet werden. Hierbei sollen qualitative Aspekte und nicht monetäre oder zeitliche Aspekte genannt werden. Beispiel: Alle Testfälle mit der Priorität Critical verlaufen erfolgreich und maximal 10\% der nicht kritischen Testfälle schlagen fehl.
+	
+	\item[Testmetriken] Beschreibt, welche Metriken während des Tests auf der jeweiligen Teststufe erhoben werden auf den Ebenen: Anforderungen, Testfälle, Testsets, Incidents/Defects. Dabei kann auf vorhandene Metriken des entsprechenden Testmanagementtools zurückgegriffen werden. Beispiel Anforderungen: Anzahl Anforderungen, bei denen die Testfälle erfolgreich durch geführt werden konnten, resp. ein oder mehrere Testfälle fehlschlugen. Beispiel Testfälle: Anzahl Testfälle mit den Status Passed und Failed.
+	
+	\item[Anforderungen an Testdaten] Spezifiziert, welche Testdaten erstellt werden und wo diese abgelegt/verwaltet sind. Beispiele: Stammdaten des Kunden, Daten von Vorgängerversionen, Von Testing erstellte Skripte.
+	
+	\item[Anforderungen an die Testumgebung] Beschreibt die Testumgebung (Software u. Hardware), sowie die abhängigen Umsysteme, die Einfluss auf die Testumgebung haben. Dabei soll auch die Version der entsprechenden Systeme angegeben werden. Beispiel: Der Versionsstand darf während einer Testiteration nicht verändert werden. Dies betrifft ebenfalls Änderungen, die die Konfiguration betreffen und nicht direkt im Programmcode definiert sind.
+	
+	\item[Regressionstests und Fehlernachtests] Beschreibt, wie Testfälle identifiziert werden, die in der nächsten Iteration wiederum getestet werden. Ferner wird definiert, wie mit Incidents/Defects umgegangen wird, resp. wie der Prozess hierfür definiert ist.
+	
+\end{description}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.6\linewidth]{fig/testkonzept-struktur}
+\caption{Testkonzept-Struktur}
+\label{fig:testkonzept-struktur}
+\end{figure}
