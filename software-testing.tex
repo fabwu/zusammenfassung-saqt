@@ -1,5 +1,44 @@
 \chapter{Software Testing}
 
+\section{Warum ist Testen so wichtig}
+
+Werden Tests nicht schon von Beginn weg eingeplant, werden sie nie mehr aufgeholt. Der Zeitverzug führt dazu, dass selbst die bestehenden Tests nur rudimentär durchgeführt werden. Es fehlt meist die zugeordnete Verantwortlichkeit (Rolle) welche sicherstellt, dass Tests auf Vollständigkeit, Sinnhaftigkeit und Realitätsbezug erarbeitet und durchgeführt werden. Damit man erfolgreich Testen kann braucht es drei Dinge:
+\begin{description}
+	\item[Test-Tool] Tools gibt es wie Sand am Meer. Aus der Sicht des Managements sind Tools ideal, weil sie ein Preisschild haben und es sich um eine einmalige Investition handelt. Zudem wird das Personalbudget nicht belastet und die Tool-Hersteller wollen verkaufen und argumentieren deshalb gut. Das hat zur Folge das gerne und viel in Tools investiert wird. 
+	\item[Prozess] Prozesse sind in einem Unternehmen meist schon vorhanden. Prozesswissen ist vorhanden und es muss immer ein Hype (ITIL, SCRUM usw.) verwendet werden. Investitionen erübrigen sich, da Prozesse nur \textit{gemalt} werden müssen. Für eine firmenweite Prozessdoku reicht meist das Geld nicht. Deshalb wird in diesem Bereich weder aktiv investiert noch aktiv gespart.
+	\item[Testmanager] Die Schlüsselrolle des Testmanagers wird oft verkannt, weil theoretisch jeder testen kann. Dadurch verkommt Testen oft zum \textit{Anhängsel}. Personal kostet und deshalb wird nur in Entwickler investiert, welche die gewünschten Anforderungen in Code umsetzen. Testen können am Schluss die künftigen Anwender. Personalkosten sind nicht gern gesehen im Budget, denn was macht man mit dem ganzen Personal nach Projekt-Ende? Die Personalbeschaffung übersteigt auch oft die Budgetkompetenz eines Projektleiters. Hier wird selten investiert, aber auch sehr schnell gespart.
+\end{description}
+Diese ungerechte Verteilung kommt zustande, weil nur die aktuellen Investitionskosten im Vordergrund stehen. Allfällige Kosten welche durch Fehler entstehen, fallen unter ein anderes Budget. Deshalb sind diese Kosten meist nicht auf dem Radar der Entscheidungsträger. Zudem kann der Nutzen von Testen nicht quantifiziert oder belegt werden. Auch die Tester argumentieren meist zu technisch und zu wenig ökonomisch.
+
+Wenn beim Testen gespart wird geht oft einiges schief. Testtools sind beispielsweise nicht optimal konfiguriert und nicht an das Unternehmen (Prozess, Kultur) angepasst. Dadurch dass die Testtools nicht gepflegt und gewartet werden, entstehen viele Leichen, also Tools die zwar vorhanden sind aber nicht verwendet werden. Die Prozesse passen meist nicht auf aktuelle Abläufe weil sie zu starr modelliert sind. Da sie nicht verbessert werden, behindern sie zügiges Arbeiten. Es fehlt das Aktive, die Verantwortlichkeit und die Führung.
+
+Das Testen beginnt mit der Abnahme (Freigabe) der Anforderungen. Wichtig ist dabei dass der Endzustand klar, vollständig und widerspruchsfrei beschrieben ist. Die Abnahme der Anforderungen sollte deshalb von einem Team übernommen werden, welches Kompetenzen aus Entwicklung, Architektur, Testengineering, Fachverständnis und Support mitbringt. Das Testengineering stellt sicher, dass Anforderungen vollständig, widerspruchsfrei und messbar sind. 
+
+Ein Softwaretest prüft und bewertet Software auf Erfüllung der für ihren Einsatz definierten Anforderungen und misst ihre Qualität. Dazu passt auch folgender \textit{Spruch}:
+\begin{quote}
+	Testen unterscheidet sich von Experimentieren dadurch, dass es beim Testen eine Erwartung gibt die belegt werden soll, während das Ergebnis beim Experimentieren offen ist oder nur vermutet werden kann.
+\end{quote}
+
+Dem V-Modell aus Abbildung \ref{fig:v-modell} lässt sich entnehmen, dass auf jeder Ebene der Entwicklung das Testen nötig ist.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/v-modell}
+\caption{V-Modell}
+\label{fig:v-modell}
+\end{figure}
+Zudem gibt es eine ISO-Norm (Abbildung \ref{fig:iso-25000}), die beschreibt wie Qualität aussieht.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/iso-25000}
+\caption{Qualitätsnorm}
+\label{fig:iso-25000}
+\end{figure}
+Eine weitere interessante Beobachtung ist, dass bei schlechten Tests und einem schlechten Produkt wenig Fehler gefunden werden, weil die Tests nicht alle Fehler einfangen. Wenn man dann die Qualität der Tests erhöht, findet man sehr viele Fehler. Erst wenn auch die Qualität der Software erhöht wird findet man wieder wenig Fehler.
+
+Auch in agilen Projekten hat Testen durchaus seinen Platz, denn Sinn und Zweck des Testens ist unabhängig von der verwendeten Projektmethode. Jedoch muss die Organisation des Testens an die Projektmethode angepasst werden. In agilen Projekten kann pro User Story ein Test-Case erstellt werden. In den darauffolgenden Iterationen wird dieser Test-Case immer weiter angepasst bis er evtl. sogar automatisiert werden kann. Bei einem Wasserfall-Projekt ist das Test- und Entwicklungsteam getrennt. Die beiden Teams arbeiten in unterschiedlichen Welten, was oft zu mangelhafter Synchronisation zwischen den Teams führt. Mit dem Testen wird auch oft zu spät begonnen, was meistens zu kostspieligen Fehlern führt. 
+
+Das Testen hat sich im Laufe der Zeit verändert. Das Testmanagement hat sich von der reinen Prüfdisziplin zum Steuerungsinstrument für nachhaltige Systemqualität entwickelt. Probleme können effektiv verhindert werden, weil Fehler früh erkannt und behoben werden können. Das Management hat mit dem Testmanager eine kompetente Ansprechperson, um mit seiner Hilfe fundierte Entscheidungen zu treffen. Durch das Testen wird Transparenz geschaffen was den Entscheidungsprozess beschleunigt und dadurch Wettbewerbsvorteile verschafft werden.
+
 \section{Test-Prozess}
 
 Innerhalb des Test-Prozess arbeiten mehrere Personen mit unterschiedliche Rollen:
