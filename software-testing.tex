@@ -29,7 +29,7 @@ Dem V-Modell aus Abbildung \ref{fig:v-modell} lässt sich entnehmen, dass auf je
 Zudem gibt es eine ISO-Norm (Abbildung \ref{fig:iso-25000}), die beschreibt wie Qualität aussieht.
 \begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{fig/iso-25000}
+\includegraphics[width=0.5\linewidth]{fig/iso-25000}
 \caption{Qualitätsnorm}
 \label{fig:iso-25000}
 \end{figure}
@@ -38,6 +38,31 @@ Eine weitere interessante Beobachtung ist, dass bei schlechten Tests und einem s
 Auch in agilen Projekten hat Testen durchaus seinen Platz, denn Sinn und Zweck des Testens ist unabhängig von der verwendeten Projektmethode. Jedoch muss die Organisation des Testens an die Projektmethode angepasst werden. In agilen Projekten kann pro User Story ein Test-Case erstellt werden. In den darauffolgenden Iterationen wird dieser Test-Case immer weiter angepasst bis er evtl. sogar automatisiert werden kann. Bei einem Wasserfall-Projekt ist das Test- und Entwicklungsteam getrennt. Die beiden Teams arbeiten in unterschiedlichen Welten, was oft zu mangelhafter Synchronisation zwischen den Teams führt. Mit dem Testen wird auch oft zu spät begonnen, was meistens zu kostspieligen Fehlern führt. 
 
 Das Testen hat sich im Laufe der Zeit verändert. Das Testmanagement hat sich von der reinen Prüfdisziplin zum Steuerungsinstrument für nachhaltige Systemqualität entwickelt. Probleme können effektiv verhindert werden, weil Fehler früh erkannt und behoben werden können. Das Management hat mit dem Testmanager eine kompetente Ansprechperson, um mit seiner Hilfe fundierte Entscheidungen zu treffen. Durch das Testen wird Transparenz geschaffen was den Entscheidungsprozess beschleunigt und dadurch Wettbewerbsvorteile verschafft werden.
+
+\subsection{Der Nutzen von Testen}
+
+\begin{itemize}
+	\item Das Testbudget kann eingeplant werden, Kosten für Nachbesserungen nicht.
+	\item Fehler kosten Geld, Testen stellt sicher, dass Fehler früher systematisch erkennt werden.
+	\item Ein konsequent gelebter Testprozess hat auch positiven Einfluss auf die Beschreibung der Anforderungen - es kann schlussendlich schneller entwickelt werden.
+	\item Mittels eines Testprozess ist man gezwungen, dass Fehler, Änderungen und Neuanforderungen genau umschrieben werden.
+	\item Testmanagement ist Führungsarbeit und gerade in agilen Prozessen dank nachweisbaren Fakten oft das einzig stete und somit verlässliche.
+\end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-1}
+	\caption{Testen Nutzen 1}
+	\label{fig:testen-nutzen-1}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-2}
+	\caption{Testen Nutzen 2}
+	\label{fig:testen-nutzen-2}
+\end{figure}
+
 
 \section{Test-Prozess}
 
@@ -194,36 +219,46 @@ Zudem stellt sich immer die Frage ob die Fehler reproduzierbar sind. Man spricht
 	\item C: Nicht reproduzierbar.	
 \end{itemize}
 
-\subsection{Schritt 4: }
-tbd. here chapter 3
+\subsection{Schritt 4:}
 
-\newpage
-\section{Nichtfunktionale Anforderungen und der Testquadrant}
+%TODO Schritt 4 noch hinzufügen
 
-\subsection{Der Nutzen von Testen}
+\section{Kennzahlen}
 
+Der vorherige Abschnitt hat einen Testprozess beschrieben der aus vier Schritten bestand. Der letzte Schritt ist eine Auswertungsphase, in der die Testresultate zu \textit{management-tauglichen} Reports zusammengefasst und grafisch dargestellt. Der Testreport soll dem Management ermöglichen, basierend auf dem zu erwartenden Restrisiko eine Entscheidung betreffend Go/NoGo zu treffen. Nachfolgend sind ein paar Kriterien aufgelistet, die beachtet werden sollten bezüglich den Go/NoGo-Entscheides:
 \begin{itemize}
-	\item Das Testbudget kann eingeplant werden, Kosten für Nachbesserungen nicht.
-	\item Fehler kosten Geld, Testen stellt sicher, dass Fehler früher systematisch erkennt werden.
-	\item Ein konsequent gelebter Testprozess hat auch positiven Einfluss auf die Beschreibung der Anforderungen - es kann schlussendlich schneller entwickelt werden.
-	\item Mittels eines Testprozess ist man gezwungen, dass Fehler, Änderungen und Neuanforderungen genau umschrieben werden.
-	\item Testmanagement ist Führungsarbeit und gerade in agilen Prozessen dank nachweisbaren Fakten oft das einzig stete und somit verlässliche.
+	\item Wer fällt die Entscheide
+	\item Gibt es eine Überraschung
+	\item Wie werden die Entscheide gefällt
+	\item Existieren Fakten
+	\item Ist ein Entscheid begründbar
+	\item Ist ein Entscheid nachvollziehbar
+	\item Sind mögliche Risiken identifiziert und bekannt
+	\item Gibt es Entscheidungskriterien
+	\item Wird aus dem Bauch entschieden
 \end{itemize}
-
-\begin{figure}[h!]
+Ein Beispiel für einen Report findet man in Abbildung \ref{fig:go-nogo-report}. Dabei wurden Komponenten mit einem hohen Risiko (RPI 1) komplett mit Tests abgedeckt und es befinden sich keine bekannten Fehler mehr in der Komponente. Komponenten mit einem tieferen Risiko werden nicht komplett mit Tests abgedeckt und teilweise sind sogar noch kleine Fehler vorhanden, welche aber das Produkt nicht beeinflussen. Durch diese Darstellung kann das Management eine fundierte Entscheidung treffen.
+\begin{figure}
 \centering
-\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-1}
-\caption{Testen Nutzen 1}
-\label{fig:testen-nutzen-1}
+\includegraphics[width=0.7\linewidth]{fig/go-nogo-report}
+\caption{Management Report}
+\label{fig:go-nogo-report}
 \end{figure}
+Es bietet sich auch an ein Testcockpit für ein Projekt einzurichten. Dort sieht man jederzeit das erwartete Resultat eines Tests gemäss Anforderungen und kann dadurch schnell auf Fehler reagieren.
 
-\begin{figure}[h!]
-	\centering
-	\includegraphics[width=0.7\linewidth]{fig/testen-nutzen-2}
-	\caption{Testen Nutzen 2}
-	\label{fig:testen-nutzen-2}
-\end{figure}
+Kennzahlen sind nicht nur im Testen wichtig, weil man etwas was man nicht messen kann auch nicht kontrollieren kann. So muss z.B. ein Pilot jederzeit seine Flughöhe und Geschwindigkeit messen können, um sein Flugzeug im Griff zu haben. Das Erfassen von Kennzahlen kann auch mit Fiebermessen verglichen werden. Mit der Feststellung, dass das Kind Fieber hat, wird es nicht gesünder. Mit der Bestätigung, dass das Kind Fieber hat, auch nicht. Jedoch beugt ein regelmässigen Gesundheitscheck oft einer plötzlichen und schweren Krankheit vor. Die Kennzahlen müssen also im Testprozess definiert werden und dienen dort als Führungsinstrument der Projektleitung und des Testmanagements.
 
+Während des Testprozesses gibt es verschiedene Kennzahlen, welche wichtige Fragen beantworten. Nachfolgend werden diese Fragen aufgelistet und beschrieben welche Kennzahlen diese beantworten.
+\begin{description}
+	\item[Was darf es kosten?] Mit Testen kann ein Projekt \textit{vergoldet} werden. Deshalb muss man Kosten und Nutzen von Tests sorgfältig abwägen. Man kann beispielsweise jeden Use Case mit einem RPI bewerten und je mehr Risiko ein Use Case hat desto mehr Tests werden dafür geschrieben.
+	\item[Sind wir bereit?] Um diese Frage zu beantworten muss man den Testfortschritt dokumentieren. Der Testfortschritt beinhaltet wie viele Testfälle erstellt werden müssen, wie viele sind bereits erstellt und wie lange dauert die Vorbereitung noch. Man sollte auch darauf achten wie viele Use Cases bereits mit Tests abgedeckt sind. Das Management kann dann den Fortschritt über die Zeit beobachten und die Reihenfolge der Testerstellung dem Risiko eines Use Cases anpassen. Dann kann entschieden werden, ob man bereit zum Testen ist. Tester und Q-Menschen sind nie bereit, dass birgt das Risiko die Testvorbereitung und Testinfrastruktur zu vergolden.
+	\item[Ist es reif?] Um zu entscheiden ob eine Komponente reif ist, muss man beobachten wie viele Tests zur Verfügung stehen und wie viele davon schon getestet werden konnten. Natürlich muss man auch beachten wie viele Tests erfolgreich sind und wie viele noch zu testen sind. Der Reifegrad einer Komponente kann aus der Summe aller Fehler, der Summe der offenen Fehler und der Anzahl der erfolgreich getesteten Use Cases bestimmt werden.
+	\item[Wagen wir es?] Am Schluss kann das Management mit dem Testreport, welcher im vorherigen Abschnitt beschrieben wurde, entscheiden ob der Release gewagt wird.
+\end{description}
+
+% Nutzen von Test wird in der ersten Section dokumentiert
+
+\section{Nichtfunktionale Anforderungen und der Testquadrant}
 
 \subsection{NFA}
 
