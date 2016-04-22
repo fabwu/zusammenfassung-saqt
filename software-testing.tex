@@ -219,13 +219,16 @@ Zudem stellt sich immer die Frage ob die Fehler reproduzierbar sind. Man spricht
 	\item C: Nicht reproduzierbar.	
 \end{itemize}
 
-\subsection{Schritt 4:}
+\subsection{Schritt 4: Auswerten}
 
-%TODO Schritt 4 noch hinzufügen
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/test-prozess-schritt-4}
+	\caption{Test-Prozess Schritt 4}
+	\label{fig:test-prozess-schritt-4}
+\end{figure}
 
-\section{Kennzahlen}
-
-Der vorherige Abschnitt hat einen Testprozess beschrieben der aus vier Schritten bestand. Der letzte Schritt ist eine Auswertungsphase, in der die Testresultate zu \textit{management-tauglichen} Reports zusammengefasst und grafisch dargestellt. Der Testreport soll dem Management ermöglichen, basierend auf dem zu erwartenden Restrisiko eine Entscheidung betreffend Go/NoGo zu treffen. Nachfolgend sind ein paar Kriterien aufgelistet, die beachtet werden sollten bezüglich den Go/NoGo-Entscheides:
+Der letzte Schritt ist eine Auswertungsphase, in der die Testresultate zu \textit{management-tauglichen} Reports zusammengefasst und grafisch dargestellt. Der Testreport soll dem Management ermöglichen, basierend auf dem zu erwartenden Restrisiko eine Entscheidung betreffend Go/NoGo zu treffen. Nachfolgend sind ein paar Kriterien aufgelistet, die beachtet werden sollten bezüglich den Go/NoGo-Entscheides:
 \begin{itemize}
 	\item Wer fällt die Entscheide
 	\item Gibt es eine Überraschung
@@ -238,15 +241,16 @@ Der vorherige Abschnitt hat einen Testprozess beschrieben der aus vier Schritten
 	\item Wird aus dem Bauch entschieden
 \end{itemize}
 Ein Beispiel für einen Report findet man in Abbildung \ref{fig:go-nogo-report}. Dabei wurden Komponenten mit einem hohen Risiko (RPI 1) komplett mit Tests abgedeckt und es befinden sich keine bekannten Fehler mehr in der Komponente. Komponenten mit einem tieferen Risiko werden nicht komplett mit Tests abgedeckt und teilweise sind sogar noch kleine Fehler vorhanden, welche aber das Produkt nicht beeinflussen. Durch diese Darstellung kann das Management eine fundierte Entscheidung treffen.
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\includegraphics[width=0.7\linewidth]{fig/go-nogo-report}
+\includegraphics[width=0.6\linewidth]{fig/go-nogo-report}
 \caption{Management Report}
 \label{fig:go-nogo-report}
 \end{figure}
+
 Es bietet sich auch an ein Testcockpit für ein Projekt einzurichten. Dort sieht man jederzeit das erwartete Resultat eines Tests gemäss Anforderungen und kann dadurch schnell auf Fehler reagieren.
 
-Kennzahlen sind nicht nur im Testen wichtig, weil man etwas was man nicht messen kann auch nicht kontrollieren kann. So muss z.B. ein Pilot jederzeit seine Flughöhe und Geschwindigkeit messen können, um sein Flugzeug im Griff zu haben. Das Erfassen von Kennzahlen kann auch mit Fiebermessen verglichen werden. Mit der Feststellung, dass das Kind Fieber hat, wird es nicht gesünder. Mit der Bestätigung, dass das Kind Fieber hat, auch nicht. Jedoch beugt ein regelmässigen Gesundheitscheck oft einer plötzlichen und schweren Krankheit vor. Die Kennzahlen müssen also im Testprozess definiert werden und dienen dort als Führungsinstrument der Projektleitung und des Testmanagements.
+\textbf{Kennzahlen} sind nicht nur im Testen wichtig, weil man etwas was man nicht messen kann auch nicht kontrollieren kann. So muss z.B. ein Pilot jederzeit seine Flughöhe und Geschwindigkeit messen können, um sein Flugzeug im Griff zu haben. Das Erfassen von Kennzahlen kann auch mit Fiebermessen verglichen werden. Mit der Feststellung, dass das Kind Fieber hat, wird es nicht gesünder. Mit der Bestätigung, dass das Kind Fieber hat, auch nicht. Jedoch beugt ein regelmässigen Gesundheitscheck oft einer plötzlichen und schweren Krankheit vor. Die Kennzahlen müssen also im Testprozess definiert werden und dienen dort als Führungsinstrument der Projektleitung und des Testmanagements.
 
 Während des Testprozesses gibt es verschiedene Kennzahlen, welche wichtige Fragen beantworten. Nachfolgend werden diese Fragen aufgelistet und beschrieben welche Kennzahlen diese beantworten.
 \begin{description}
