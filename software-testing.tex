@@ -305,7 +305,62 @@ Während des Testprozesses gibt es verschiedene Kennzahlen, welche wichtige Frag
 	 
 \end{description}
 
-tbd. here chapter 5
+\section{Praxisbeispiele}
+
+Die Zufriedenheit eines End-Benutzer hängt massgebend davon ab, wie seine Erwartungen umgesetzt wurden. Diese Erwartungen sind als Anforderungen definiert und müssen verifiziert und validiert werden. Ein Test-Case beschreibt, wie eine Anforderung verifiziert wird. In einen Test-Case können mehrere Use-Cases und Anforderungen fliessen. Ein Use-Case beschreibt eine Sequenz von Aktionen, mit einem Resultat für den Aktor. Ein Use-Case sollte folgende Elemente beinhalten:
+\begin{itemize}
+	\item Name
+	\item Kurze Beschreibung
+	\item Ablauf
+	\item Vorbedingungen
+	\item Nachbedingungen
+\end{itemize}
+Abbildung \ref{fig:use-case-to-test-case} zeigt wie von einem Use-Case die entsprechenden Test-Cases abgeleitet werden.
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/use-case-to-test-case}
+\caption{Use Case in Test Case umwandeln}
+\label{fig:use-case-to-test-case}
+\end{figure}
+Die Test-Cases können dann in einer Entscheidungstabelle gegenüber gestellt werden. Zudem kann der Test-Case um folgende Punkte ergänzt werden:
+\begin{enumerate}
+	\item Test-Case Description
+	\item Execution Condition
+		\begin{enumerate}
+			\item Preconditions
+			\item Test Inputs
+			\item Observation Points
+			\item Control Points
+			\item Expected Results
+			\item Postconditions
+		\end{enumerate}
+\end{enumerate}
+Bei einem Test-Case ist weniger mehr, deshalb sollte der Test-Case agil wachsen. Als Best Practice sollte pro Anforderung mindestens zwei Test-Cases erstellt werden. Ein Test-Case zeigt, dass die Anforderung erfüllt ist und der zweite Test-Case prüft abnormales Verhalten. 
+
+Nachfolgend wird ein Beispiel Schritt für Schritt aufgebaut, um das Erstellen eines Test-Cases zu erläutern. Wir nehmen an das du als Tester bei einer Versicherung arbeitetest. Nun muss der Fall \textit{Mutterschaft} getestet werden. Es gelten folgende Regeln:
+\begin{enumerate}
+	\item Mutterschaft ist nur mit Geschlecht weiblich möglich
+	\item Person muss versichert sein und gültige Versicherung haben
+	\item  Person muss in gültigem Altersbereich sein
+	\item Der Zeitraum einer Schwangerschaft muss plausibel sein
+\end{enumerate}
+Als ersten Schritt müssen die Anforderungen geprüft und detailliert werden. So können beispielsweise folgende Fragen bezüglich der Anforderungen auftreten:
+\begin{itemize}
+	\item Was bedeutet z.B. gültige Versicherung?
+	\item Was bedeutet gültiger Altersbereich?
+	\item Was bedeutet plausibler Zeitraum?
+\end{itemize}
+Nachdem die Anforderungen widerspruchsfrei festgehalten wurden, beginnt die kreative Phase. Dabei überlegt man sich welche Testszenarien möglich sind. Man sollte besonders auf Spezialfälle und seltsame Situationen achten und diese als Szenarien festhalten. Sind die Testfälle grob umrissen können diese im Detail entwickelt werden.
+
+Ein wichtiger Punkt sind auch die Testdaten. Grundsätzlich sollten pro Testszenario die jeweils notwendigen Testdaten spezifiziert werden. Dabei sollten folgende Punkte beachtet werden:
+\begin{itemize}
+	\item Wie kann sichergestellt werden, dass die Daten wiederverwendbar sind?
+	\item Wie kann sichergestellt werden, dass die Daten auch nächstes Jahr noch gültig sind?
+	\item Wo werden die Daten abgelegt?
+	\item Wer verwaltet die Daten?
+	\item Wer pflegt die Daten?
+	\item Wer ist für die Daten verantwortlich?
+\end{itemize}
 
 \section{Testkonzept}
 
