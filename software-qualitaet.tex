@@ -65,11 +65,20 @@ Es gibt unterschiedliche Skalen:
 	\item[Verhältnisskala] Wie die Intervallskala, aber es existiert ein objektiv bestimmbarer Nullwert. Beispiel: durchschnittliche Anzahl Fehler für Produkt A = 5 Fehler/KLOC, Produkt B = 2.5 Fehler/KLOC. Fehlerrate für A ist doppelt so hoch wie für B. Werte können sinnvoll zueinander ins Verhältnis gesetzt werden.
 \end{description} 
 
+Beispiel-Metriken:
+\begin{description}
+	\item[Efferent Couplings] \textit{It measures the number of data types a class knows about.}. Die Anzahl Klassen die ein einzelne Klasse kennt.
+	
+	\item[Cyclomatic Complexity] Anzahl der binären Verzweigungen. Jede Methode hat einen Grundwert von 1. +1 für jedes if, while, do, for, ?:, catch, case. +1 für jedes Vorkommen der Operatoren \&\& oder ||.
+	
+	\item[Lack of Cohesion nach Henderson-Sellers] Wird überall anders berechnet. Beschreibt den Zusammenhalt von Methoden in der betrachteten Klasse. Wir brauchen bei der Berechnung die Information darüber, welche Methoden auf welche Instanzvariabeln zugreifen.
+\end{description}
+
 Das SQALE Rating bewertet ein Software-Artefakt indem es den geschätzten Aufwand für die Beseitigung eines Mangels in Bezug zum gesamten Entwicklungsaufwand ins Verhältnis setzt. Beispiel: Kosten in WorkUnits (WU) und Grösse in KLOC (1000 Zeilen Code) 1 KLOC erfordert 100 WU. Entwicklungskosten: 5 KLOC = 500 WU. Maintainability Aufwand: 15 WU. 15/500 = 3% = C.
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.4\linewidth]{fig/sqale-rating}
+\includegraphics[width=0.1\linewidth]{fig/sqale-rating}
 \caption{SQALE Rating}
 \label{fig:sqale-rating}
 \end{figure}
