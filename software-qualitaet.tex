@@ -1,5 +1,7 @@
 \chapter{Software Qualität}
 
+\section{Einführung}
+
 Im Themenbereich der Software Qualität werden wünschenswerte Attribute eines Software-Produkts beschrieben. Die Qualitätssicherung muss über den gesamten Software-Lebenszyklus berücksichtigt werden - von der Analyse bis zum Betrieb. Interessant ist die Kostenverteilung nach Böhm mit und ohne Wartung von Software auf Abbildung \ref{fig:kostenverteilung-sw-entwicklung-nach-boehm}.
 
 \begin{figure}[h!]
@@ -82,3 +84,64 @@ Das SQALE Rating bewertet ein Software-Artefakt indem es den geschätzten Aufwan
 \caption{SQALE Rating}
 \label{fig:sqale-rating}
 \end{figure}
+
+\section{Refactoring}
+
+Beim Refactoring wir die interne Struktur eines Softwaresystems verbessert, ohne dabei die Funktionalität zu verändern. Dadurch kann man schlechtes Design in schön strukturierten Code umwandeln. Um keine neuen Fehler in den Code einzubauen, braucht es ein diszipliniertes Vorgehen. Beim Refactoring macht man kleine einfache Schritte, die zusammengefasst eine positiven Einfluss auf das Design haben. Nochmals es wird das Design verbessert, indem man den Code verbessert.
+
+Bei vielen Softwareprojekten wird die Software zuerst designt und dann ausprogrammiert. Das funktioniert am Anfang auch recht gut, aber mit der Zeit ändert sich der Code und die Qualität nimmt ab. Hier hilft ein Refactoring, um die Codequalität trotzdem hoch zu halten. Man lernt während dem Bauen des Systems, wie man das Design verbessern kann und den Code so leichter verständlich und veränderbar macht. Ein ähnlicher Weg geht auch Scrum, wobei da eher die Anforderungen im Vordergrund stehen. Mit diesem Wissen kann das Twin Peak Modell von Nuseibeh um einen weiteren Peak für das Design erweitert werden (siehe Abbildung \ref{fig:twin-peaks-1}).
+
+\begin{figure}
+\centering
+\includegraphics[width=0.7\linewidth]{fig/twin-peaks}
+\caption{Twin Peaks}
+\label{fig:twin-peaks-1}
+\end{figure}
+
+Ein Rafactoring sollte bei folgenden Szenarien durchgeführt werden:
+\begin{itemize}
+	\item Bevor neue Funktionalität zu bestehender Software hinzugefügt wird
+	\item Beim Einarbeiten in unbekannte Software (Code Reviews)
+	\item Zur Isolierung und Identifikation von Fehlern
+	\item Wenn sich Anzeichen für schlechte Qualität häufen
+	\item Zur Verbesserung der Entwicklungsproduktivität
+\end{itemize}
+Mangelnde Codequalität drückt sich durch folgende Anzeichen aus:
+\begin{itemize}
+	\item Viele globale Variablen
+	\item Verstreute Zugriffe auf diese Variablen
+	\item Schlecht verständliche Methoden- und Variablennamen
+	\item Fehlende und schlecht verständliche Kommentare
+	\item Fehlerbehandlung nicht explizit vorhanden
+	\item Kopierter / redundanter Code
+	\item Bad Smells (Kent Beck)
+\end{itemize}
+Es gibt folgende Bad Smells die eher auf eine Klasse angewendet werden:
+\begin{description}
+	\item Duplicated Code
+	\item Long Method
+	\item Large Class
+	\item Long Parameter List
+	\item Feature Envy
+	\item Switch Statements
+	\item Inappropriate Intimacy
+	\item Lazy Class
+	\item Data Class
+	\item Message Chains
+	\item Middle Man
+	\item Comments
+\end{description}
+Die folgenden Bad Smells beziehen sich eher auf das Gesamtsystem:
+\begin{itemize}
+	\item Divergent Change
+	\item Shotgun Surgery
+	\item Data Clumps
+	\item Primitive Obsession
+	\item Parallel Inheritance Hierarchies
+	\item Speculative Generality
+	\item Temporary Field
+	\item Alternative Classes with Different Interfaces
+	\item Incomplete Library Class
+	\item Refused Bequest
+\end{itemize}
+Aufgrund dieser Bad Smells wurde von Martin Fowler ein Refactoring-Katalog erstellt, welcher den Fokus auf objektorientierte Programmierung richtet (keine Unterstützung für parallele Programme, verteilte Systeme usw.). Für diese Refactorings gibt es auch eine gute Toolunterstützung.
