@@ -89,16 +89,18 @@ Das SQALE Rating bewertet ein Software-Artefakt indem es den geschätzten Aufwan
 
 Beim Refactoring wir die interne Struktur eines Softwaresystems verbessert, ohne dabei die Funktionalität zu verändern. Dadurch kann man schlechtes Design in schön strukturierten Code umwandeln. Um keine neuen Fehler in den Code einzubauen, braucht es ein diszipliniertes Vorgehen. Beim Refactoring macht man kleine einfache Schritte, die zusammengefasst eine positiven Einfluss auf das Design haben. Nochmals es wird das Design verbessert, indem man den Code verbessert.
 
+Martin Fowler sagt folgendes übers Refactoring: \textit{Refactoring is the process of changing a software system in such a way that it does not alter the external behavior of the code yet improves its internal structure. It is a disciplined way to clean up code that minimizes the chance of introducing bugs. In essence when you refactor, you improve the design of the code after it has been written. With refactoring you can take a bad design, chaos even, and rework it into well-designed code. Each step is simple, even simplistic. Yet the cumulative effect of these small changes can radically improve the design.}
+
 Bei vielen Softwareprojekten wird die Software zuerst designt und dann ausprogrammiert. Das funktioniert am Anfang auch recht gut, aber mit der Zeit ändert sich der Code und die Qualität nimmt ab. Hier hilft ein Refactoring, um die Codequalität trotzdem hoch zu halten. Man lernt während dem Bauen des Systems, wie man das Design verbessern kann und den Code so leichter verständlich und veränderbar macht. Ein ähnlicher Weg geht auch Scrum, wobei da eher die Anforderungen im Vordergrund stehen. Mit diesem Wissen kann das Twin Peak Modell von Nuseibeh um einen weiteren Peak für das Design erweitert werden (siehe Abbildung \ref{fig:twin-peaks-1}).
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{fig/twin-peaks}
 \caption{Twin Peaks}
 \label{fig:twin-peaks-1}
 \end{figure}
 
-Ein Rafactoring sollte bei folgenden Szenarien durchgeführt werden:
+Ein Refactoring sollte bei folgenden Szenarien durchgeführt werden:
 \begin{itemize}
 	\item Bevor neue Funktionalität zu bestehender Software hinzugefügt wird
 	\item Beim Einarbeiten in unbekannte Software (Code Reviews)
@@ -117,7 +119,8 @@ Mangelnde Codequalität drückt sich durch folgende Anzeichen aus:
 	\item Bad Smells (Kent Beck)
 \end{itemize}
 Es gibt folgende Bad Smells die eher auf eine Klasse angewendet werden:
-\begin{itemize}
+\begin{multicols}{2}
+\begin{description}
 	\item Duplicated Code
 	\item Long Method
 	\item Large Class
@@ -130,9 +133,12 @@ Es gibt folgende Bad Smells die eher auf eine Klasse angewendet werden:
 	\item Message Chains
 	\item Middle Man
 	\item Comments
-\end{itemize}
+\end{description}
+\end{multicols}
+
 Die folgenden Bad Smells beziehen sich eher auf das Gesamtsystem:
-\begin{itemize}
+\begin{multicols}{2}
+\begin{description}
 	\item Divergent Change
 	\item Shotgun Surgery
 	\item Data Clumps
@@ -143,10 +149,9 @@ Die folgenden Bad Smells beziehen sich eher auf das Gesamtsystem:
 	\item Alternative Classes with Different Interfaces
 	\item Incomplete Library Class
 	\item Refused Bequest
-\end{itemize}
-Aufgrund dieser Bad Smells wurde von Martin Fowler ein Refactoring-Katalog erstellt, welcher den Fokus auf objektorientierte Programmierung richtet (keine Unterstützung für parallele Programme, verteilte Systeme usw.). Für diese Refactorings gibt es auch eine gute Toolunterstützung.
-
-
+\end{description}
+\end{multicols}
+Aufgrund dieser Bad Smells wurde von Martin Fowler ein Refactoring-Katalog erstellt, welcher den Fokus auf objektorientierte Programmierung richtet (keine Unterstützung für parallele Programme, verteilte Systeme usw.). Für diese Refactorings gibt es auch eine gute Toolunterstützung. 
 
 \begin{figure}
 	\centering
