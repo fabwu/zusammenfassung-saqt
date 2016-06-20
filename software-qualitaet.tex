@@ -117,7 +117,7 @@ Mangelnde Codequalität drückt sich durch folgende Anzeichen aus:
 	\item Bad Smells (Kent Beck)
 \end{itemize}
 Es gibt folgende Bad Smells die eher auf eine Klasse angewendet werden:
-\begin{description}
+\begin{itemize}
 	\item Duplicated Code
 	\item Long Method
 	\item Large Class
@@ -130,7 +130,7 @@ Es gibt folgende Bad Smells die eher auf eine Klasse angewendet werden:
 	\item Message Chains
 	\item Middle Man
 	\item Comments
-\end{description}
+\end{itemize}
 Die folgenden Bad Smells beziehen sich eher auf das Gesamtsystem:
 \begin{itemize}
 	\item Divergent Change
@@ -144,4 +144,97 @@ Die folgenden Bad Smells beziehen sich eher auf das Gesamtsystem:
 	\item Incomplete Library Class
 	\item Refused Bequest
 \end{itemize}
-Aufgrund dieser Bad Smells wurde von Martin Fowler ein Refactoring-Katalog erstellt, welcher den Fokus auf objektorientierte Programmierung richtet (keine Unterstützung für parallele Programme, verteilte Systeme usw.). Für diese Refactorings gibt es auch eine gute Toolunterstützung. 
+Aufgrund dieser Bad Smells wurde von Martin Fowler ein Refactoring-Katalog erstellt, welcher den Fokus auf objektorientierte Programmierung richtet (keine Unterstützung für parallele Programme, verteilte Systeme usw.). Für diese Refactorings gibt es auch eine gute Toolunterstützung.
+
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/fazit-refactoring}
+	\caption{Code Qualität}
+	\label{fig:fazit-refactoring}
+\end{figure}
+
+Während der Implementierung sollte man sich immer genau auf eine Aufgabe konzentrieren, mit anderen Worten, man soll nur immer genau ein Hut tragen. Sich bewusst für ein Ziel entscheiden und konsequent daran arbeiten.
+
+\begin{itemize}
+	\item Refactoring
+	\item Funktions-Erweiterung
+	\item Performance-Optimierung
+	\item Technologie-Portierung
+\end{itemize}
+
+Wenn man den Hut \textit{Performance-Optimierung} trägt, sollte man nicht zugleich die Funktion erweitern. Denn Multi-Tasking, das Tragen von mehreren Hüten zur gleichen Zeit, funktioniert nicht! Der Hut \textit{Refactoring}, oft auch als Mütze bezeichnet, schafft verbesserte Bedingungen für die anderen Hüte.
+
+Beim Refactoring haben sich kleine Schritte in kurzen Intervallen bewährt. Dieser Prozess lässt sich ideal mit automatisierten Tests (Unit-Tests) verknüpfen.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/zyklische-arbeitsweise-beim-refactoring}
+	\caption{Zyklische Arbeitsweise beim Refactoring}
+	\label{fig:zyklische-arbeitsweise-beim-refactoring}
+\end{figure}
+
+\subsection{Risiken und Herausforderungen}
+
+\begin{itemize}
+	\item Oft ist Neuschreiben die bessere Alternative. Wenn das System viele Fehler hat und es zu fest verdrahtet (Anzahl Abhängigkeiten) ist. Aber auch wenn die Anforderungen komplett geändert haben oder neue Technologien verwendet werden. 
+	
+	\item Das Ziel des Refactoring sollte nie aus dem Auge verloren werden. Man spricht dabei oft von \textit{vergolden}. Einen Plan machen und rechtzeitig aufhören.
+	
+	\item Nur mit Änderungen können neue Bugs eingebaut werden. Daher wird wärmsten empfohlen, dass der Code mit Tests abgedeckt ist.
+	
+	\item Refactoring ist eine Investition in die Zukunft. Am Ende eines Projekt noch Refactoring zu betreiben, bringt nicht viel.
+\end{itemize}
+
+\subsection{Grosse Refactorings}
+In aller Regel möchte man immer kleine Refactorings machen. Ab und zu braucht man aber auch grössere Refactorings. Dabei steigt auch das Risiko, wofür man einen Plan braucht. In grösseren Projekten möchte man das Design verbessern. Die Unterschiede zu kleinen Refactorings sind folgende:
+
+\begin{itemize}
+	\item Benötigen viel mehr Zeit
+	\item Auswirkungen sind nicht direkt vorhersehbar
+	\item Sichtbarer Fortschritt stellt sich erst nach vielen kleinen Refactorings ein
+	\item Erfolge oft erst nach intensiver Arbeit / Frustrationsphasen
+	\item Zustimmung im Entwicklungsteam notwendig
+\end{itemize}
+
+Der Refactoring Footprint ist die Anzahl der Features, welche beim Refactoring betroffen waren. Je grösser der Footprint ist, desto grösser ist auch das Risiko. Daher sollte man diesen klein halten. In kleinen Schritten arbeiten und beispielsweise Design Stages einführen. Grössere Zwischenziele für das Design festlegen mittels Prioritäten, Plan, dokumentierte Entscheidungen, Richtung für viele kleine Refactorings festlegen. Ach ja Skizzen unterstützen das Refactoring immer! 
+
+Immer die Balance zwischen Expansion und Kontraktion halten. \textit{Refactoring is the art of first making duplication explicit and then eliminating it.}. Erstmal mehr Chaos (Expansion) und dann wieder aufräumen (Kontraktion).
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/refactoring-als-strukturmodifikation}
+	\caption{Refactoring als Strukturmodifikation}
+	\label{fig:refactoring-als-strukturmodifikation}
+\end{figure}
+
+\subsection{Beispiele}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/tease-apart-inheritance}
+	\caption{Tease Apart Inheritance}
+	\label{fig:tease-apart-inheritance}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/proc-to-object}
+	\caption{Convert Procedural Designs into Objects}
+	\label{fig:proc-to-object}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/separate-domain-from-presentation}
+	\caption{Separate Domain from Presentation}
+	\label{fig:separate-domain-from-presentation}
+\end{figure}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.7\linewidth]{fig/extract-hierarchy}
+	\caption{Extract Hierarchy}
+	\label{fig:extract-hierarchy}
+\end{figure}
