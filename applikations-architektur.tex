@@ -254,7 +254,7 @@ Die Wiederverwendbarkeit ist eine Eigenschaft des Systems zur Entwicklungszeit. 
 Der Architekt muss Entscheidungen treffen und diese in der Systemstruktur umsetzen. Das heisst oft, dass Kompromisse gefunden werden müssen. Grundlegend werden gute Ideen wiederverwendet und neue Ideen müssen früh validiert werden. Zudem können Prinzipien \& Taktiken angewendet und Stile \& Muster eingesetzt werden. Prinzipien sind sehr allgemeine Richtlinien wobei Stile, Taktiken und Muster detaillierte Lösungsansätze für konkrete Entwurfsentscheidungen bieten.
 
 \subsection{Prinzipien}
-Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestaltung einer Architektur zur Anwendung kommen sollten. Mit dem Ziel die Komplexität zu reduzieren und die Flexbilität sowie die Änderbarkeit zu erhöhen. Die Prinzipien sagen nichts darüber aus wie sie konkret angewendet werden! Nachfolgen einige Prinzipien:
+Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestaltung einer Architektur zur Anwendung kommen sollten. Mit dem Ziel die Komplexität zu reduzieren und die Flexibilität sowie die Änderbarkeit zu erhöhen. Die Prinzipien sagen nichts darüber aus wie sie konkret angewendet werden! Nachfolgen einige Prinzipien:
 
 \begin{description}
 	\item[Lose Kopplung (Loose Coupling)] Jede Form der Abhängigkeit zwischen zwei Komponenten stellt eine Kopplung dar. Pro Abhängigkeit wird Erzeuger wie Verbraucher definiert. Der Verbraucher ist abhängig vom Erzeuger. Das Ziel ist es, dass der Erzeuger möglichst unabhängig vom Verbraucher geändert werden kann. Lose Kopplung erreichen wir durch Abstraktion, Separation of Concerns, Information Hiding, Messages Queues, etc.
@@ -275,7 +275,7 @@ Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestal
 	\label{fig:schichten-architektur}
 	\end{figure}
 
-	\item[Geheimhaltung (Information Hiding)] Alles verbergen, was nicht benötigt wird. So entstehen keine unnötigen Abhängigkeiten. In der OOP alle Daten als privat markieren. Ein Fassade Pattern kann dazu dienen, alles andere zu verstecken. Bei der Schichtung kann die darüberliegende Schicht nur auf die darunterliegende Schicht zugreifen.
+	\item[Geheimhaltung (Information Hiding)] Alles verbergen, was nicht benötigt wird. So entstehen keine unnötigen Abhängigkeiten. In der OOP alle Daten als privat markieren. Ein Fassade Pattern kann dazu dienen, alles andere zu verstecken. Bei der Schichtung kann die darüber liegende Schicht nur auf die darunterliegende Schicht zugreifen.
 	
 	\item[Abstraktion] Bei der Abstraktion werden wichtige Aspekte identifiziert und unwichtige Details vernachlässigt. Es ist schlussendlich ein Spezialfall der Geheimhaltung. Das wichtigste Teilprinzip nennt sich \emph{Schnittstellensabstraktion}, denn erst durch die Beziehungen der Bausteine eines Systems untereinander kommt eine Architektur wirklich zum Tragen. Mittels Geheimhaltung und Abstraktion wird die Portabilität der Architektur gestärkt (Plattform-Unabhängigkeit). Folgendes noch zur Schnittstellensabstraktion:
 	
@@ -284,14 +284,14 @@ Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestal
 		\item Trennung von Schnittstelle und Implementierung.
 		\item Liskov-Substitution: Erbende Klassen durch die Schnittstelle der vererbende Klasse aufrufbar.
 		\item Schnittstelle-Segregation: Ein Klient soll nie auf einer Schnittstelle basieren, die er nie benutzt. Komplexe Schnittstellen in mehrere einzelne Schnittstellen auftrennen.
-		\item Design by Contract: Vor-, Nachbediengungen sowie Invarianten einer Schnittstelle explizit angeben.
+		\item Design by Contract: Vor-, Nachbedingungen sowie Invarianten einer Schnittstelle explizit angeben.
 	\end{itemize}
 		
-	\item[Modularität] Zerlegung eines Systems in definierte Systembausteine, deren funktionale Verantwortlichkeiten klar abgegrenzt sind. Systembausteine leicht austauschbar und in sich abgeschlossen. Diese sind überschaubar, verstehbar, leicht wartbar und wiederverwendbar.Einfache und stabile architektonische Beziehungen. Kombination von Abstraktion, Separation of Concerns und Information Hiding.
+	\item[Modularität] Zerlegung eines Systems in definierte Systembausteine, deren funktionale Verantwortlichkeiten klar abgegrenzt sind. Systembausteine leicht austauschbar und in sich abgeschlossen. Diese sind überschaubar, verständlich, leicht wartbar und wiederverwendbar.Einfache und stabile architektonische Beziehungen. Kombination von Abstraktion, Separation of Concerns und Information Hiding.
 	
 	Bausteine sollen offen für Veränderungen sein (Entwurf für Veränderung) und geschlossen für die Nutzung der internen Details durch andere Systembausteine (Abstraktionen, Geheimhaltung).
 	
-	\item[Rückverfolgbarkeit (Traceability)] Architektonische Strukturen und Entscheidungen durchgängig von den Anforderungen über die Modelle zum Code verfolgbar. Dies soll die Verständlichkeit der Architektur erhöhen. Wichtig ist, dass einheitliche Namenskonventionen verwendet werden. Leichter verstehbare Strukturen sind unabhängiger voneinander und leichter zu ändern.
+	\item[Rückverfolgbarkeit (Traceability)] Architektonische Strukturen und Entscheidungen durchgängig von den Anforderungen über die Modelle zum Code verfolgbar. Dies soll die Verständlichkeit der Architektur erhöhen. Wichtig ist, dass einheitliche Namenskonventionen verwendet werden. Leichter verständliche Strukturen sind unabhängiger voneinander und leichter zu ändern.
 	
 	\item[Selbstdokumentation] Jede Information über einen Systembaustein sollte zum Bestandteil des Systembausteins selbst gemacht werden. In der Realität laufen Dokumentation und Software jedoch schnell auseinander. Nach Möglichkeit soll die Dokumentation genau dort gemacht werden, wo die Software entsteht. Unterstützt so auch die Rückverfolgbarkeit.
 	
@@ -322,7 +322,6 @@ Für alle Taktiken kann man sicher immer folgende Entscheidungen überlegen (7 A
 	\item Technologiewahl: Vorgegeben als Constraint oder Wahl des Architekten
 \end{itemize}
 
-
 \begin{description}
 	\item[Taktiken für Verfügbarkeit] Die Verfügbarkeit wird durch Failures (Service kann nicht mehr erbracht werden) und Faults (Mangel, Defekt, kann ein Failure werden) eingeschränkt. Taktiken für die Verfügbarkeit zielen darauf ab, dass das System Faults abfangen kann, dass kein Failure entsteht.
 	
@@ -352,7 +351,7 @@ Für alle Taktiken kann man sicher immer folgende Entscheidungen überlegen (7 A
 \end{description}
 
 \subsection{Systemidee entwickeln}
-Eine erste Systemidee kann entwickelt werden, wenn wir die Prinzipien und Taktiken auf das Entwurfsproblem angewendet werden. Es ist ein kreativer Prozess, es gibt mehr als eine Lösung, Kompromisse finden, die richtigen Fragen stellen und bewährte Lösungen wiederverwenden.
+Eine erste Systemidee kann entwickelt werden, wenn wir die Prinzipien und Taktiken auf das Entwurfsproblem angewendet werden. Es ist ein kreativer Prozess, es gibt mehr als eine Lösung: Kompromisse finden, die richtigen Fragen stellen und bewährte Lösungen wiederverwenden.
 
 Architektur heisst Entscheidungen treffen: \emph{A software system's architecture is the set of principal design decisions made about the system}. Welches immer auf Kompromisse basiert. Es können nie alle Qualitätsattribute zu 100 Prozent erfüllt werden - trade off finden!
 
@@ -374,7 +373,7 @@ Genauso wichtig wie die vielen technischen Komponenten ist die Fachdomäne (Doma
 \end{figure}
 
 \subsection{Zentralisierung vs. Dezentralisierung}
-Immer wieder stellt sich der Architekt die Frage ob er einen Aspekt in der Architektur in einem Baustein bündeln oder auf mehrere Bausteine verteilen soll? Im Vordergrund stehen Einfachheit, Schlichtheit und Verständlichkeit. Die Zentralisierung bietet folgende Vorteile: Hohe Datensicherheit, leichte Systemintegraton, Ausfallsicherheit leichter zu gewährleisten, einfacher zu administrieren. Es besteht jedoch die Gefahr von Monolithen, eventuell hohe Hardware-Kosten, Hersteller- und Technologie Abhängigkeiten. Die Dezentralisierung bietet tendenziell niedrige Hardware-Kosten, höhere Flexibilität und kleinere Komponenten. Jedoch ist der Integrationsaufwand höher, Abhängigkeit von Netz sowie schwieriger zu administrieren.
+Immer wieder stellt sich der Architekt die Frage ob er einen Aspekt in der Architektur in einem Baustein bündeln oder auf mehrere Bausteine verteilen soll? Im Vordergrund stehen Einfachheit, Schlichtheit und Verständlichkeit. Die Zentralisierung bietet folgende Vorteile: Hohe Datensicherheit, leichte Systemintegration, Ausfallsicherheit leichter gewährleisten, einfacher zu administrieren. Es besteht jedoch die Gefahr von Monolithen, eventuell hohe Hardware-Kosten, Hersteller- und Technologie Abhängigkeiten. Die Dezentralisierung bietet tendenziell niedrige Hardware-Kosten, höhere Flexibilität und kleinere Komponenten. Jedoch ist der Integrationsaufwand höher, Abhängigkeit von Netz sowie schwieriger zu administrieren.
 
 \subsection{Empfehlungen für den Entwurf von Systemstrukturen}
 \begin{itemize}
