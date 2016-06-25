@@ -20,19 +20,20 @@ Ein Softwaretest prüft und bewertet Software auf Erfüllung der für ihren Eins
 \end{quote}
 
 Dem V-Modell aus Abbildung \ref{fig:v-modell} lässt sich entnehmen, dass auf jeder Ebene der Entwicklung das Testen nötig ist.
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{fig/v-modell}
 \caption{V-Modell}
 \label{fig:v-modell}
 \end{figure}
 Zudem gibt es eine ISO-Norm (Abbildung \ref{fig:iso-25000}), die beschreibt wie Qualität aussieht.
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=0.5\linewidth]{fig/iso-25000}
 \caption{Qualitätsnorm}
 \label{fig:iso-25000}
 \end{figure}
+
 Eine weitere interessante Beobachtung ist, dass bei schlechten Tests und einem schlechten Produkt wenig Fehler gefunden werden, weil die Tests nicht alle Fehler einfangen. Wenn man dann die Qualität der Tests erhöht, findet man sehr viele Fehler. Erst wenn auch die Qualität der Software erhöht wird findet man wieder wenig Fehler.
 
 Auch in agilen Projekten hat Testen durchaus seinen Platz, denn Sinn und Zweck des Testens ist unabhängig von der verwendeten Projektmethode. Jedoch muss die Organisation des Testens an die Projektmethode angepasst werden. In agilen Projekten kann pro User Story ein Test-Case erstellt werden. In den darauffolgenden Iterationen wird dieser Test-Case immer weiter angepasst bis er evtl. sogar automatisiert werden kann. Bei einem Wasserfall-Projekt ist das Test- und Entwicklungsteam getrennt. Die beiden Teams arbeiten in unterschiedlichen Welten, was oft zu mangelhafter Synchronisation zwischen den Teams führt. Mit dem Testen wird auch oft zu spät begonnen, was meistens zu kostspieligen Fehlern führt. 
@@ -87,9 +88,8 @@ Wie die Abbildung \ref{fig:test-prozess} zeigt, ist der Test-Prozess (nach Noser
 
 \subsection{Schritt 1: Analysieren}
 
-\begin{quote}
-	Wie können die Entwickler entwickeln, wenn die Tester nicht wissen, was zu testen ist?
-\end{quote}
+\textit{Wie können die Entwickler entwickeln, wenn die Tester nicht wissen, was zu testen ist?}
+
 
 \begin{figure}[h!]
 \centering
@@ -128,11 +128,11 @@ Nebst dem Risiko basierten Testen gibt es noch andere Teststrategien:
 
 Nebst dem Vorgehen spielen auch die \textbf{Tools} eine wichtige Rolle. Welche Tools werden für die Verwaltung von Anforderungen, Tests, Testabläufe und Testplanung verwendet. Mit was macht man Bug-Tracking, manuelles Testen, automatisiertes Testen, Lasttest, Datenmanipulation, Datengenerierung? Für alle Tools sollte man sicher immer Gedanken machen. Was ist das Ziel, wer kann das Tool bedienen, wie sieht die Lebensdauer aus, Kosten, wartbar, etc.
 
+\newpage
+
 \subsection{Schritt 2: Vorbereiten}
 
-\begin{quote}
-	Tester und Q-Menschen sind nie bereit, sie können die Testvorbereitung sowie die Testinfrastruktur problemlos vergolden.
-\end{quote}
+\textit{Tester und Q-Menschen sind nie bereit, sie können die Testvorbereitung sowie die Testinfrastruktur problemlos vergolden.}
 
 \begin{figure}[h!]
 \centering
@@ -174,9 +174,7 @@ Wir können nicht alles testen, da es unzählige Pfade gibt. Wir brauchen eine S
 
 \subsection{Schritt 3: Durchführen}
 
-\begin{quote}
-	Die Praxis zeigt immer wieder, dass von Hand gepflegte Systeme in kritischen Momenten nicht mehr gepflegt werden, denn Testen geht immer vor. Doch genau dann sind die Kennzahlen als Entscheidungsbasis besonders wichtig.
-\end{quote}
+\textit{Die Praxis zeigt immer wieder, dass von Hand gepflegte Systeme in kritischen Momenten nicht mehr gepflegt werden, denn Testen geht immer vor. Doch genau dann sind die Kennzahlen als Entscheidungsbasis besonders wichtig.}
 
 \begin{figure}[h!]
 \centering
@@ -206,12 +204,12 @@ Abbildung \ref{fig:der-bug} zeigt dass ein Bug nicht unbedingt ein Bug sein muss
 \end{figure}
 
 Ist jeder Fehler ein Fehler? Es macht Sinn die Fehler mit einer Severity (Schweregrad) kategorisieren:
-\begin{itemize}
-	\item 1 LOW: leichter Fehler, nur einzelne Testschritte betroffen.
-	\item 2 MEDIUM: Betriebsstörender Fehler, Systemfunktion nicht beeinträchtig. Wesentlichtes funktioniert.
-	\item 3 HIGH: Schwerer Fehler, Auswirkung auf Funktion.
-	\item 4 URGENT: Fataler Fehler, Auswirkung auf ganzes System, Testabbruch.
-\end{itemize}
+\begin{description}
+	\item[1 LOW:] leichter Fehler, nur einzelne Testschritte betroffen.
+	\item[2 MEDIUM:] Betriebsstörender Fehler, Systemfunktion nicht beeinträchtig.
+	\item[3 HIGH:] Schwerer Fehler, Auswirkung auf Funktion.
+	\item[4 URGENT:] Fataler Fehler, Auswirkung auf ganzes System, Testabbruch.
+\end{description}
 
 Zudem stellt sich immer die Frage ob die Fehler reproduzierbar sind. Man spricht von \textbf{Beobachtungsgüte}:
 \begin{itemize}
@@ -267,10 +265,12 @@ Während des Testprozesses gibt es verschiedene Kennzahlen, welche wichtige Frag
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.7\linewidth]{fig/nfa-testing}
+\includegraphics[width=0.56\linewidth]{fig/nfa-testing}
 \caption{NFA Testing}
 \label{fig:nfa-testing}
 \end{figure}
+
+\newpage
 
 \subsection{Agile Testquadrant nach Brian Mark}
 

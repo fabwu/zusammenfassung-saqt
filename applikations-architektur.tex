@@ -213,6 +213,8 @@ Die Performance beschreibt die Zeit in der ein System auf ein bestimmtes Ereigni
 \label{fig:performance}
 \end{figure}
 
+\newpage
+
 \subsection{Security}
 
 Ein System soll Informationen vor nicht berechtigtem Zugriff schützen. Auch die Integrität der Daten muss gewährleistet sein. Darum müssen Angriffe erkannt und entsprechend darauf reagiert werden. Abbildung \ref{fig:security} zeigt ein mögliches Szenario.
@@ -234,6 +236,8 @@ Die Testbarkeit ist die Einfachheit mit der Fehler im System festgestellt werden
 \caption{Szenario Testability}
 \label{fig:testability}
 \end{figure}
+
+\newpage
 
 \subsection{Usability}
 
@@ -299,6 +303,8 @@ Architektur-Prinzipien repräsentieren bewährte Grundsätze, die bei der Gestal
 	
 \end{description}
 
+\newpage
+
 Bild \ref{fig:abhangigkeiten-prinzipien} zeigt die Beziehung der einzelnen Prinzipien untereinander.
 
 \begin{figure}[h!]
@@ -322,33 +328,38 @@ Für alle Taktiken kann man sicher immer folgende Entscheidungen überlegen (7 A
 	\item Technologiewahl: Vorgegeben als Constraint oder Wahl des Architekten
 \end{itemize}
 
-\begin{description}
-	\item[Taktiken für Verfügbarkeit] Die Verfügbarkeit wird durch Failures (Service kann nicht mehr erbracht werden) und Faults (Mangel, Defekt, kann ein Failure werden) eingeschränkt. Taktiken für die Verfügbarkeit zielen darauf ab, dass das System Faults abfangen kann, dass kein Failure entsteht.
-	
-	\begin{figure}[h!]
+\subsubsection{Taktiken für Verfügbarkeit}
+
+Die Verfügbarkeit wird durch Failures (Service kann nicht mehr erbracht werden) und Faults (Mangel, Defekt, kann ein Failure werden) eingeschränkt. Taktiken für die Verfügbarkeit zielen darauf ab, dass das System Faults abfangen kann, dass kein Failure entsteht.
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{fig/tactic-availability}
 	\caption{Availability-Taktiken}
 	\label{fig:tactic-availability}
-	\end{figure}
-	
-	\item[Taktiken für Modifiability]
-	\begin{figure}[h!]
+\end{figure}
+
+\newpage
+
+\subsubsection{Taktiken für Modifiability}
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{fig/tactic-modifability}
 	\caption{Taktiken für Modifiability}
 	\label{fig:tactic-modifability}
-	\end{figure}
+\end{figure}
 
-	\item[Taktiken für Performance]
-	\begin{figure}[h!]
+\subsubsection{Taktiken für Performance}
+
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{fig/tactic-performance}
 	\caption{Taktiken für Performance}
 	\label{fig:tactic-performance}
-	\end{figure}
-	
-\end{description}
+\end{figure}
+
+\newpage
 
 \subsection{Systemidee entwickeln}
 Eine erste Systemidee kann entwickelt werden, wenn wir die Prinzipien und Taktiken auf das Entwurfsproblem angewendet werden. Es ist ein kreativer Prozess, es gibt mehr als eine Lösung: Kompromisse finden, die richtigen Fragen stellen und bewährte Lösungen wiederverwenden.
@@ -491,7 +502,7 @@ SOA wurde mega gehypt und nun machen sich alle darüber lustig und verwenden sta
 	\item[+] Verbindung von Business und IT
 	\item[+] Voraussetzung für Cloud, Mashups usw.
 	\item[--] Zusätzliche Komplexität wegen offener, dezentralisierter Systeme	
-	\item[+] Vielzahl schwieriger Fragestellungen (Service design, Interoperabilität, Standards)
+	\item[--] Vielzahl schwieriger Fragestellungen (Service design, Interoperabilität, Standards)
 \end{itemize}
 
 \begin{figure}[h!]
@@ -628,6 +639,8 @@ Ein Architekt bewegt sich auf unterschiedlichen Architektur-Ebenen. Er muss sich
 \caption{Architekur Ebene und Dimensionen}
 \label{fig:architekur-ebenen-und-dimensionen}
 \end{figure}
+
+\newpage
 
 Zimmerann unterscheidet nach folgenden Ebenen:
 \begin{itemize}
